@@ -8,5 +8,6 @@ public interface BoardService {
 	
 	void insert(BoardVO vo);
 	void update(BoardVO vo);
+	void cnt(BoardVO vo);
 	void delete(BoardVO vo);
 }

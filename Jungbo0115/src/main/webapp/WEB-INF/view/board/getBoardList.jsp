@@ -17,22 +17,23 @@ table {
 <section>
 	<div align="center">
 		<br>
+		<h1>게시판 목록 보기</h1>
 		&emsp;<button type=button onclick="location.href='boardForm.do'"> 글쓰기 </button>
 		<table border=1>
 			<tr align="center">
-				<td>idx</td>
-				<td>seq</td>
-				<td>title</td>
-				<td>writer</td>
-				<td>regdate</td>
-				<td>cnt</td>
+				<th>idx</th>
+				<th>seq</th>
+				<th>title</th>
+				<th>writer</th>
+				<th>regdate</th>
+				<th>cnt</th>
 			</tr>
 			<c:forEach items="${li}" var="m" varStatus="status">
 
 				<tr>
 					<td>${status.count}</td>
 					<td>${m.seq}</td>
-					<td>${m.title}</td>
+					<td><a href="getBoard.do?seq=${m.seq}">${m.title}</a></td>
 					<td>${m.writer}</td>
 					<td>${m.regdate}</td>
 					<td>${m.cnt}</td>

@@ -10,10 +10,29 @@
 
 		select * from board
 	</select>
+	
+	<select id="getBoard"
+		parameterType="com.rubypaper.project.board.BoardVO"
+		resultType="com.rubypaper.project.board.BoardVO">
+
+		select * from board where seq = #{seq}
+	</select>
+	
 	<insert id="insert"
 		parameterType="com.rubypaper.project.board.BoardVO">
 		insert into board (seq, title, writer, content) values
 		(idx_board.nextval, #{title}, #{writer}, #{content})
 	</insert>
+	
+	<update id="update"
+		parameterType="com.rubypaper.project.board.BoardVO">
+		update board set title=#{title}, writer=#{writer}, content=#{content}
+		where seq=#{seq}
+	</update>
+	
+	<update id="cnt"
+		parameterType="com.rubypaper.project.board.BoardVO">
+		update board set cnt=cnt+1 where seq=#{seq}
+	</update>
 
 </mapper>

@@ -21,7 +21,16 @@ public class BoardController {
 	@GetMapping("getBoardList.do")
 	String getBoardList(Model model) {
 		model.addAttribute("li", service.getBoardList(null));
+		
 		return "/board/getBoardList";
+	}
+	
+	@GetMapping("getBoard.do")
+	String getBoard(Model model, BoardVO vo) {
+		service.cnt(vo);
+		model.addAttribute("m", service.getBoard(vo));
+		
+		return "/board/getBoard";
 	}
 
 	@GetMapping("boardForm.do")
@@ -37,4 +46,13 @@ public class BoardController {
 		
 		return "redirect:getBoardList.do";
 	}
+	
+	@GetMapping("boardUpdate.do")
+	String boardUpdate(BoardVO vo) {
+		System.out.println("저장하기");
+		service.update(vo);
+		
+		return "redirect:getBoardList.do";
+	}
+
 }

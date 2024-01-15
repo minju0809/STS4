@@ -40,4 +40,9 @@ public class BoardServiceImpl implements BoardService {
 		dao.delete(vo);
 	}
 
+	@Override
+	public void cnt(BoardVO vo) {
+		dao.cnt(vo);
+	}
+
 }

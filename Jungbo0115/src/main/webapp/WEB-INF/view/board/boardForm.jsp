@@ -21,16 +21,18 @@ table {
 		<form action="boardInsert.do">
 			<table border=1>
 				<tr>
-					<td>제목</td>
+					<th>제목</th>
 					<td><input type=text name=title></td>
 				</tr>
 				<tr>
-					<td>작성자</td>
+					<th>작성자</th>
 					<td><input type=text name=writer></td>
 				</tr>
 				<tr>
-					<td>내용</td>
-					<td><input type=text name=content></td>
+					<th>내용</th>
+					<td>
+						<textarea rows=5 cols=30 name=content></textarea>
+					</td>
 				</tr>
 				<tr>
 					<td colspan=2><input type=submit value="저장"></td>
