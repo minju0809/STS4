@@ -19,4 +19,5 @@
 	<nav>
 		&emsp;<a href="index.do">홈으로</a>
 		&emsp;<a href="getBoardList.do"> 목록보기 </a>
+		&emsp;<a href="boardForm.do"> 글쓰기 </a>
 	</nav>

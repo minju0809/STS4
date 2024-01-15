@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 :root {
-	--main-background-color: #4b3634;  /* CSS 전역 변수 선언 */
+	--main-background-color: #303e3d;  /* CSS 전역 변수 선언 */
 	--main-color: #fff;
 }
 
@@ -25,7 +25,7 @@ nav {
 	text-align: left;
 }
 
-nav a {
+a {
 	text-decoration: none;
 	color: var(--main-color);
 }
