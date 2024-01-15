@@ -20,4 +20,6 @@
 		&emsp;<a href="index.do">홈으로</a>
 		&emsp;<a href="getBoardList.do"> 목록보기 </a>
 		&emsp;<a href="boardForm.do"> 글쓰기 </a>
+		&emsp;<a href="getPsdList.do"> 자료실목록 </a>
+		&emsp;<a href="psdForm.do"> 자료실저장 </a>
 	</nav>

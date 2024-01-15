@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.rubypaper.project.psd.PsdDao">
+
+	<select id="getPsdList"
+		parameterType="com.rubypaper.project.psd.PsdVO"
+		resultType="com.rubypaper.project.psd.PsdVO">
+
+		select * from psdTbl0115
+	</select>
+	
+	<insert id="insert"
+		parameterType="com.rubypaper.project.psd.PsdVO">
+		insert into psdTbl0115 (idx, title, imgStr) values
+		(idx_board.nextval, #{title}, #{imgStr})
+	</insert>
+
+</mapper>
