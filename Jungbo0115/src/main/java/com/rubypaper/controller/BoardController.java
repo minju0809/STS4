@@ -19,8 +19,8 @@ public class BoardController {
 	
 	@GetMapping("getBoardList.do")
 	String getBoardList(Model model) {
-		service.getBoardList(null);
-		return "getBoardList";
+//		service.getBoardList(null);
+		return "/board/getBoardList";
 	}
 
 	@GetMapping("BoardForm.do")
