@@ -2,13 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
- <mapper namespace="com.rubypaper.project.board.BoardDao">
- 
-  <select id="getBoardList" parameterType="com.rubypaper.project.board.BoardVO"
-                    resultType="com.rubypaper.project.board.BoardVO" >
+<mapper namespace="com.rubypaper.project.board.BoardDao">
 
-  select *  from  board
- 
- </select> 
- 
- </mapper>
+	<select id="getBoardList"
+		parameterType="com.rubypaper.project.board.BoardVO"
+		resultType="com.rubypaper.project.board.BoardVO">
+
+		select * from board
+	</select>
+	<insert id="insert"
+		parameterType="com.rubypaper.project.board.BoardVO">
+		insert into board (seq, title, writer, content) values
+		(idx_board.nextval, #{title}, #{writer}, #{content})
+	</insert>
+
+</mapper>

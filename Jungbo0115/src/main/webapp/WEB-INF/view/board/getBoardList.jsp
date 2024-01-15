@@ -16,17 +16,8 @@ table {
 </style>
 <section>
 	<div align="center">
-	<span>서버  </span>: 
-<%=application.getServerInfo() %><br>
-<span>서블릿  </span>: 
-<%= application.getMajorVersion() %>.<%= application.getMinorVersion() %><br>
-<span>JSP  </span>: 
-<%= JspFactory.getDefaultFactory().getEngineInfo().getSpecificationVersion() %>
 		<br>
-		<div align=left>
-			&emsp;<a href="boardForm.do"> 글쓰기 </a>
-			&emsp;<input type=button href="boardForm.do"> 글쓰기 </a>
-		</div>
+		&emsp;<button type=button onclick="location.href='boardForm.do'"> 글쓰기 </button>
 		<table border=1>
 			<tr align="center">
 				<td>idx</td>

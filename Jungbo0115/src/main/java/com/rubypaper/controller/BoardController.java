@@ -33,7 +33,7 @@ public class BoardController {
 	@GetMapping("boardInsert.do")
 	String boardInsert(BoardVO vo) {
 		System.out.println("저장하기");
-//		service.insert(vo);
+		service.insert(vo);
 		
 		return "redirect:getBoardList.do";
 	}
