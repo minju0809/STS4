@@ -31,6 +31,13 @@ public class ShopController {
 		return "/shop/getShopList";
 	}
 	
+	@GetMapping("getShop.do")
+	String getShop(Model model, ProductVO vo) {
+		model.addAttribute("m", service.getShop(vo));
+		
+		return "/shop/getShop";
+	}
+	
 	@GetMapping("shopForm.do")
 	String shopForm(Model model) {
 		System.out.println("form");
@@ -75,4 +82,13 @@ public class ShopController {
 		return "redirect:getShopList.do";
 	}
 	
+	@GetMapping("cart.do")
+	String buy(ProductVO vo) throws Exception, IOException {
+		
+		String path = request.getSession().getServletContext().getRealPath("/shop/img/");
+		System.out.println("path: "+path);
+		
+		return "redirect:getShopList.do";
+	}
+
 }

@@ -8,25 +8,23 @@
 <section>
 	<div align="center">
 		<br>
-		<h1>상품 목록 보기</h1>
+		<h1>장바구니 목록 보기</h1>
 		<table border=1>
 			<tr align="center">
-				<th>idx</th>
-				<th>img</th>
+				<th>카트번호</th>
+				<th>상품번호</th>
 				<th>상품이름</th>
+				<th>수량</th>
 				<th>상품가격</th>
-				<th>상세설명</th>
-				<th>등록일</th>
 			</tr>
 			<c:forEach items="${li}" var="m" varStatus="status">
 
 				<tr>
+					<td>${m.cart_id}</td>
 					<td>${m.product_id}</td>
-					<td><img src="/shop/img/${m.product_imgStr}" width=50></td>
-					<td><a href=getShop.do?product_id=${m.product_id}>${m.product_name}</a></td>
+					<td>${m.product_name}</td>
+					<td>${m.product_amount}</td>
 					<td>${m.product_price}</td>
-					<td>${m.product_desc}</td>
-					<td>${m.product_date}</td>
 				</tr>
 
 			</c:forEach>

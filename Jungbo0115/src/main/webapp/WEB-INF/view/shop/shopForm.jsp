@@ -13,7 +13,7 @@
 			<table border=1>
 				<tr>
 					<th>번호</th>
-					<td><input type=text name=product_id value=${product_id}></td>
+					<td><input type=text name=product_id value="${product_id}"></td>
 				</tr>
 				<tr>
 					<th>상품이름</th>
