@@ -16,6 +16,7 @@
 				<th>상품이름</th>
 				<th>수량</th>
 				<th>상품가격</th>
+				<th>아이디</th>
 			</tr>
 			<c:forEach items="${li}" var="m" varStatus="status">
 
@@ -25,6 +26,7 @@
 					<td>${m.product_name}</td>
 					<td>${m.product_amount}</td>
 					<td>${m.product_price}</td>
+					<td>${m.session_id}</td>
 				</tr>
 
 			</c:forEach>

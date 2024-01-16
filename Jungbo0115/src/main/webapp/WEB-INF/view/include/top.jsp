@@ -25,4 +25,8 @@
 		&emsp;<a href="getShopList.do"> 상품목록 </a>
 		&emsp;<a href="shopForm.do"> 상품등록 </a>
 		&emsp;<a href="getCartList.do"> 장바구니목록 </a>
+		
+		<c:if test="${not empty session_id }">
+			아이디: <a href="sessionLogout.do">${session_id}</a>
+		</c:if>
 	</nav>

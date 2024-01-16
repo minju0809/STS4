@@ -52,9 +52,9 @@
 		parameterType="com.rubypaper.project.shop.CartVO">
 
 		insert into cartTbl0116 (cart_id, product_id, product_name, product_amount,
-		product_price) values
+		product_price, session_id) values
 		(seq_cartTbl.nextval, #{product_id}, #{product_name},
-		#{product_amount}, #{product_amount}*#{product_price})
+		#{product_amount}, #{product_amount}*#{product_price}, #{session_id})
 	</insert>
 
 	<update id="cartUpdate"
