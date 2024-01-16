@@ -36,13 +36,13 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public void delete(BoardVO vo) {
-		dao.delete(vo);
-	}
-
-	@Override
 	public void cnt(BoardVO vo) {
 		dao.cnt(vo);
+	}
+	
+	@Override
+	public void delete(BoardVO vo) {
+		dao.delete(vo);
 	}
 
 }

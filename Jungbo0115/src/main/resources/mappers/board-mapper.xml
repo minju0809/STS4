@@ -34,5 +34,11 @@
 		parameterType="com.rubypaper.project.board.BoardVO">
 		update board set cnt=cnt+1 where seq=#{seq}
 	</update>
-
+	
+	<delete id="delete"
+		parameterType="com.rubypaper.project.board.BoardVO">
+		
+		delete from board where seq = #{seq}
+	</delete>
+	
 </mapper>

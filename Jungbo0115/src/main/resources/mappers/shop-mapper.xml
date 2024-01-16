@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.rubypaper.project.shop.ShopDao">
+
+	<select id="getShopList"
+		parameterType="com.rubypaper.project.shop.ProductVO"
+		resultType="com.rubypaper.project.shop.ProductVO">
+
+		select * from shopTbl0116 order by product_id desc
+	</select>
+	
+<!-- 	<select id="getShop" -->
+<!-- 		parameterType="com.rubypaper.project.shop.ProductVO" -->
+<!-- 		resultType="com.rubypaper.project.shop.ProductVO"> -->
+
+<!-- 		select * from shopTbl0116 where product_id = #{product_id} -->
+<!-- 	</select> -->
+	
+	<select id="getId" resultType="int">
+
+		select max(product_id)+1 as product_id from shopTbl0116
+	</select>
+	
+	<insert id="insert"
+		parameterType="com.rubypaper.project.shop.ProductVO">
+		
+		insert into shopTbl0116 (product_id, product_name, product_price, product_desc, product_imgStr) values
+		(#{product_id}, #{product_name}, #{product_price}, #{product_desc}, #{product_imgStr})
+	</insert>
+	
+<!-- 	<delete id="delete" -->
+<!-- 		parameterType="com.rubypaper.project.shop.ProductVO"> -->
+		
+<!-- 		delete from shopTbl0116 where product_id = #{product_id} -->
+<!-- 	</delete> -->
+	
+</mapper>
