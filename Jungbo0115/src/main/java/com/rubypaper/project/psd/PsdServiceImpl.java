@@ -15,10 +15,20 @@ public class PsdServiceImpl implements PsdService {
 	public List<PsdVO> getPsdList(PsdVO vo) {
 		return dao.getPsdList(vo);
 	}
+	
+	@Override
+	public PsdVO getPsd(PsdVO vo) {
+		return dao.getPsd(vo);
+	}
 
 	@Override
 	public void insert(PsdVO vo) {
 		dao.insert(vo);
+	}
+
+	@Override
+	public void delete(PsdVO vo) {
+		dao.delete(vo);
 	}
 
 }

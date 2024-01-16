@@ -31,6 +31,13 @@ public class PsdController {
 		
 		return "/psd/getPsdList";
 	}
+	
+	@GetMapping("getPsd.do")
+	String getPsd(Model model, PsdVO vo) {
+		model.addAttribute("m", service.getPsd(vo));
+		
+		return "/psd/getPsd";
+	}
 
 	@GetMapping("psdForm.do")
 	String psdForm() {
@@ -71,6 +78,23 @@ public class PsdController {
 		vo.setImgStr(fileName); // 테이블에 파일 이름 저장
 		
 		service.insert(vo);
+		
+		return "redirect:getPsdList.do";
+	}
+	
+	@GetMapping("psdDelete.do")
+	String psdDelete(PsdVO vo) throws Exception, IOException {
+		vo = service.getPsd(vo);
+		
+		String defFile = vo.getImgStr();
+		String path = request.getSession().getServletContext().getRealPath("/psd/img/");
+		File f = new File(path+defFile); // 경로 안에 있는 파일
+		
+		if(!defFile.equals("space.png")) {
+			f.delete();
+		} 
+		
+		service.delete(vo);
 		
 		return "redirect:getPsdList.do";
 	}
