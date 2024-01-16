@@ -5,15 +5,6 @@
 
 <c:import url="${path}/WEB-INF/view/include/top.jsp" />
 
-<style>
-table {
-	width: 800px;
-}
-
-.td1 {
-	text-align: center;
-}
-</style>
 <section>
 	<div align="center">
 		<br>

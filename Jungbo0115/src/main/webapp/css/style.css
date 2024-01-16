@@ -1,8 +1,10 @@
 @charset "UTF-8";
 
 :root {
-	--main-background-color: #303e3d;  /* CSS 전역 변수 선언 */
-	--point-background-color: rgb(35, 68, 75); 
+	--main-background-color: #453c1e;  /* CSS 전역 변수 선언 */
+	--check-color: #303e3d;
+	--check2-color: #772b31;
+	--point-background-color: rgb(77, 73, 34); 
 	--main-color: #fff;
 	--link-color: #rgb(207, 190, 177);
 }
@@ -19,7 +21,7 @@ header {
 
 nav {
 	border-bottom: 1px solid white;
-	background: var(--main-background-color);
+	background: var(--point-background-color);
 	color: var(--main-color);
 	height: 40px;
 	line-height: 40px;

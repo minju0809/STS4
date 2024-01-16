@@ -2,6 +2,7 @@ package com.rubypaper.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,17 +40,35 @@ public class PsdController {
 	
 	@PostMapping("psdInsert.do")
 	String psdInsert(PsdVO vo) throws Exception, IOException {
-		System.out.println("저장하기");
 		
 		String path = request.getSession().getServletContext().getRealPath("/psd/img/");
-		
 		System.out.println("path: "+path);
 		
-		MultipartFile file = vo.getImg();
-		String fileName = file.getOriginalFilename();
-		file.transferTo(new File(path+fileName));
+		// 중복 처리 (시간)
+		long time = System.currentTimeMillis();
+		SimpleDateFormat sdf = new SimpleDateFormat("HHmmss");
+		String sdfStr = sdf.format(time);
 		
-		vo.setImgStr(fileName);
+		
+		MultipartFile file = vo.getImg(); // 파일 
+		String fileName = file.getOriginalFilename();
+		
+		File f = new File(path+fileName); // 경로 안에 있는 파일
+		
+		if(!file.isEmpty()) {
+			if(f.exists()) {
+				String onlyFileName = fileName.substring(0, fileName.lastIndexOf("."));
+				String ext = fileName.substring(fileName.lastIndexOf("."));
+				
+				fileName = onlyFileName + "_" + sdfStr + ext;
+			} 
+			// 실제 파일 저장
+			file.transferTo(new File(path+fileName));
+		} else {
+			fileName = "space.png";
+		}
+		
+		vo.setImgStr(fileName); // 테이블에 파일 이름 저장
 		
 		service.insert(vo);
 		
