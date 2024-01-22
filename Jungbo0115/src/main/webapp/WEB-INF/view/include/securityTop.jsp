@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
+
 <c:set var="path" value="${pageContext.request.contextPath }" scope="session" />
 
 <!DOCTYPE html>
@@ -17,6 +18,7 @@
  	  시큐리티 ver 1.0
 	</header>
 	<nav>
+		<c:set var="user" value="${sessionScope.session}" />
 		&emsp;<a href="/security.do">홈으로</a>
 
 		&emsp;<a href="/admin/admin.do">관리자</a>
@@ -30,9 +32,6 @@
 		&emsp;<a href="/guest/guestBoard.do">게스트게시판</a>
 
 		&emsp;<a href="/login.do">로그인</a>
-		&emsp;<a href="/logout.do">로그아웃</a>
-		
-		<c:if test="${not empty session_id }">
-			&emsp;아이디: <a href="sessionLogout.do">${session_id}</a>
-		</c:if>
+		&emsp;<a href="/logout">로그아웃</a>
+		&emsp;${user.name}(${user.username})
 	</nav>

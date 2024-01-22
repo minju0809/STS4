@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.rubypaper.login.LoginServiceImpl;
 import com.rubypaper.login.LoginVO;
 
+import jakarta.servlet.http.HttpSession;
+
 @Service
 public class SecurityUserDetailsService implements UserDetailsService {
 
@@ -18,6 +20,9 @@ public class SecurityUserDetailsService implements UserDetailsService {
 
   @Autowired
   LoginServiceImpl service;
+
+  @Autowired
+  HttpSession session;
 
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -29,6 +34,8 @@ public class SecurityUserDetailsService implements UserDetailsService {
     if (user == null) {
       throw new UsernameNotFoundException(username + " 사용자 없음");
     } else {
+
+      session.setAttribute("session", user);
       return new SecurityUser(user);
     }
   }

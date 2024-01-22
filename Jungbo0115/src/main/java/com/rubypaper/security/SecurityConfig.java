@@ -25,8 +25,8 @@ public class SecurityConfig {
 
     http.authorizeHttpRequests(authorize -> authorize
         .requestMatchers("/member/**", "/class/**").authenticated()
-        .requestMatchers("/manager/**").hasRole("manager")
-        .requestMatchers("/admin/**").hasRole("admin")
+        .requestMatchers("/manager/**").hasRole("MANAGER")
+        .requestMatchers("/admin/**").hasRole("ADMIN")
         .anyRequest().permitAll());
 
     http.csrf(csrf -> csrf.disable()); // 기본으로 나오는 시큐리티 로그인 화면 비활성화
