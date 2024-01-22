@@ -3,6 +3,6 @@ package com.rubypaper.login;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public class LoginDao {
-
+public interface LoginDao {
+  LoginVO loginOK(LoginVO vo);
 }

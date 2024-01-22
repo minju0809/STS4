@@ -9,10 +9,10 @@ public class IndexController {
     System.out.println("===> IndexController 확인");
   }
 
-  @GetMapping("login.do")
-  public String login() {
+  @GetMapping("security.do")
+  public String security() {
 
-    return "/login/login";
+    return "security";
   }
 
 }
