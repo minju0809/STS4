@@ -1,5 +1,4 @@
 @charset "UTF-8";
-
 :root {
 	--main-background-color: #453c1e;  /* CSS 전역 변수 선언 */
 	--check-color: #303e3d;
@@ -7,6 +6,10 @@
 	--point-background-color: rgb(77, 73, 34); 
 	--main-color: #fff;
 	--link-color: #rgb(207, 190, 177);
+}
+
+body {
+	/* background: var(--main-background-color); */
 }
 
 header {

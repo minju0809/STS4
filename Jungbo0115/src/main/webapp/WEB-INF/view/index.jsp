@@ -8,9 +8,16 @@
 <section>
 	<br>
 	<div align=center>
-		시작페이지
+		<h1>jungbo0115</h1>
+		<br>
+		<a href="/">시작페이지로 이동</a>
+		<br>
+		<br>
+		
 	</div>	
 	<br>
 </section>
 
 <c:import url="${path}/WEB-INF/view/include/bottom.jsp" />
+
+

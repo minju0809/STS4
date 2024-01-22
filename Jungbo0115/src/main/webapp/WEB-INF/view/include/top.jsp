@@ -27,6 +27,6 @@
 		&emsp;<a href="getCartList.do"> 장바구니목록 </a>
 		
 		<c:if test="${not empty session_id }">
-			아이디: <a href="sessionLogout.do">${session_id}</a>
+			&emsp;아이디: <a href="sessionLogout.do">${session_id}</a>
 		</c:if>
 	</nav>
