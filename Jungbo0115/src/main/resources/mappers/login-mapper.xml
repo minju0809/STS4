@@ -4,6 +4,13 @@
 
 <mapper namespace="com.rubypaper.login.LoginDao">
 	
+	<select id="getUserList"
+		parameterType="com.rubypaper.login.LoginVO"
+		resultType="com.rubypaper.login.LoginVO">
+
+		select idx, id as username, password, role, name, grade from member0122
+	</select>
+
 	<select id="loginOK"
 		parameterType="com.rubypaper.login.LoginVO"
 		resultType="com.rubypaper.login.LoginVO">

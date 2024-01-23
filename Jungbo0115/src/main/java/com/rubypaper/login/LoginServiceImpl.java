@@ -1,5 +1,7 @@
 package com.rubypaper.login;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,6 +10,11 @@ public class LoginServiceImpl implements LoginService {
 
   @Autowired
   private LoginDao dao;
+
+  @Override
+  public List<LoginVO> getUserList(LoginVO vo) {
+    return dao.getUserList(vo);
+  }
 
   @Override
   public LoginVO loginOK(LoginVO vo) {
