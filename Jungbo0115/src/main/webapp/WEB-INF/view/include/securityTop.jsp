@@ -33,5 +33,5 @@
 
 		&emsp;<a href="/login.do">로그인</a>
 		&emsp;<a href="/logout">로그아웃</a>
-		&emsp;${user.name}${user.username}
+		&emsp;${session}
 	</nav>
