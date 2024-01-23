@@ -24,9 +24,10 @@ public class SecurityConfig {
   SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
     http.authorizeHttpRequests(authorize -> authorize
-        .requestMatchers("/member/**", "/class/**").authenticated()
-        .requestMatchers("/manager/**").hasRole("MANAGER")
-        .requestMatchers("/admin/**").hasRole("ADMIN")
+        // .requestMatchers("/guest/**", "/class/**").authenticated() // 로그인(인증)한 사용자 허용
+        .requestMatchers("/admin/**").hasAuthority("ROLE_ADMIN")
+        .requestMatchers("/manager/**").hasAnyAuthority("ROLE_MANAGER", "ROLE_ADMIN")
+        .requestMatchers("/member/**", "/class/**").hasAnyAuthority("ROLE_MEMBER", "ROLE_MANAGER", "ROLE_ADMIN") // 멤버
         .anyRequest().permitAll());
 
     http.csrf(csrf -> csrf.disable()); // 기본으로 나오는 시큐리티 로그인 화면 비활성화

@@ -14,4 +14,19 @@ public class LoginServiceImpl implements LoginService {
     return dao.loginOK(vo);
   }
 
+  @Override
+  public void insert(LoginVO vo) {
+    dao.insert(vo);
+  }
+
+  @Override
+  public void delete(LoginVO vo) {
+    dao.delete(vo);
+  }
+
+  @Override
+  public void update(LoginVO vo) {
+    dao.update(vo);
+  }
+
 }

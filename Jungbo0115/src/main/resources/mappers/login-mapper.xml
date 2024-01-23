@@ -12,4 +12,23 @@
     from member0122 where id = #{username}
 	</select>
 
+	<insert id="insert"
+		parameterType="com.rubypaper.login.LoginVO">
+
+		insert into member0122 (idx, id, password, role, name, grade) 
+    values (idx.nextval, #{username}, #{password}, #{role}, #{name}, #{grade})
+	</insert>
+
+	<delete id="delete"
+		parameterType="com.rubypaper.login.LoginVO">
+
+		delete from member0122 where trim(idx) = #{idx}
+	</delete>
+
+	<update id="update"
+		parameterType="com.rubypaper.login.LoginVO">
+
+		update member0122 set password = #{password} where id = #{username}
+	</update>
+
 </mapper>
