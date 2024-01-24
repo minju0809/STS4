@@ -20,74 +20,74 @@ import jakarta.servlet.http.HttpServletRequest;
 public class ShopController {
 	@Autowired
 	private ShopService service;
-	
+
 	@Autowired
 	private HttpServletRequest request;
-	
+
 	@GetMapping("getShopList.do")
 	String getShopList(Model model) {
 		model.addAttribute("li", service.getShopList(null));
-		
+
 		return "/shop/getShopList";
 	}
-	
+
 	@GetMapping("getShop.do")
 	String getShop(Model model, ProductVO vo) {
 		model.addAttribute("m", service.getShop(vo));
-		
+
 		return "/shop/getShop";
 	}
-	
+
 	@GetMapping("shopForm.do")
 	String shopForm(Model model) {
 		System.out.println("form");
 		model.addAttribute("product_id", service.getId());
-		
+
 		return "/shop/shopForm";
 	}
-	
+
 	@PostMapping("shopInsert.do")
 	String shopInsert(ProductVO vo) throws Exception, IOException {
-		
+
 		String path = request.getSession().getServletContext().getRealPath("/shop/img/");
-		System.out.println("path: "+path);
-		
+		System.out.println("path: " + path);
+
 		// 중복 처리 (시간)
 		long time = System.currentTimeMillis();
 		SimpleDateFormat sdf = new SimpleDateFormat("HHmmss");
 		String sdfStr = sdf.format(time);
-		
-		MultipartFile file = vo.getProduct_img(); // 파일 
+
+		MultipartFile file = vo.getProduct_img(); // 파일
 		String fileName = file.getOriginalFilename();
-		
-		File f = new File(path+fileName); // 경로 안에 있는 파일
-		
-		if(!file.isEmpty()) {
-			if(f.exists()) {
+
+		File f = new File(path + fileName); // 경로 안에 있는 파일
+
+		if (!file.isEmpty()) {
+			if (f.exists()) {
 				String onlyFileName = fileName.substring(0, fileName.lastIndexOf("."));
 				String ext = fileName.substring(fileName.lastIndexOf("."));
-				
+
 				fileName = onlyFileName + "_" + sdfStr + ext;
-			} 
+			}
 			// 실제 파일 저장
-			file.transferTo(new File(path+fileName));
+			file.transferTo(new File(path + fileName));
 		} else {
 			fileName = "space.png";
 		}
-		
+
 		vo.setProduct_imgStr(fileName); // 테이블에 파일 이름 저장
-		
+
 		service.insert(vo);
-		
+
 		return "redirect:getShopList.do";
 	}
-	
+
 	@GetMapping("cart.do")
 	String buy(ProductVO vo) throws Exception, IOException {
-		
+
 		String path = request.getSession().getServletContext().getRealPath("/shop/img/");
-		System.out.println("path: "+path);
-		
+		System.out.println("path: " + path);
+
 		return "redirect:getShopList.do";
 	}
 

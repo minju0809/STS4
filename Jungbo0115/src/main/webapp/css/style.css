@@ -2,6 +2,10 @@
 
 :root {
 	--main-background-color: #fffbfb;
+	--header-background-color: #fff;
+	--section-background-color: #E7E8EC;
+	--footer-background-color: #F4F5F6;
+
 	/* CSS 전역 변수 선언 */
 	--check-color: #303e3d;
 	--check2-color: #772b31;
@@ -13,7 +17,7 @@
 
 header {
 	border-bottom: 1px solid var(--border-color);
-	background: var(--main-background-color);
+	background: var(--header-background-color);
 	color: var(--main-color);
 	height: 90px;
 	line-height: 90px;
@@ -63,8 +67,16 @@ a {
 	font-weight: bold;
 }
 
+ul {
+	text-align: center;
+}
+
+li {
+	list-style-type: none;
+}
+
 section {
-	background: var(--main-background-color);
+	background: var(--section-background-color);
 	color: var(--main-color);
 	min-height: 500px;
 	line-height: 25px;
@@ -74,7 +86,7 @@ section {
 
 footer {
 	border-top: 1px solid var(--border-color);
-	background: var(--main-background-color);
+	background: var(--footer-background-color);
 	color: var(--main-color);
 	height: 50px;
 	line-height: 50px;
@@ -108,9 +120,21 @@ td {
 		margin: 0 4px;
 		text-align: left;
 	}
-	
+
 	.nav-container {
 		background: var(--point-background-color);
+	}
+
+	.menu-list {
+		display: flex;
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.menu-list li {
+		margin-right: 10px;
+		/* 각 항목 사이의 간격을 조절할 수 있습니다. */
 	}
 
 	.burger-menu {
@@ -149,6 +173,8 @@ td {
 		background: var(--point-background-color);
 	}
 
+
+
 	.burger-menu {
 		display: block;
 	}
@@ -164,11 +190,46 @@ td {
 /* 데스크톱 화면 스타일 */
 @media (min-width: 1024px) {
 	nav {
-		justify-content: center;
+		justify-content: space-around;
 		flex-direction: row;
 	}
-
+	
 	nav a {
 		margin: 0 8px;
+	}
+
+	.nav-container {
+		box-sizing: border-box;
+	}
+	
+	.menu-list {
+		width: 100%;
+		display: flex;
+		justify-content: space-around;
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.menu {
+		height: 120px;
+	}
+
+	.menu li {
+		width: 200px;
+	}
+
+	nav:hover li ul {
+		display: block;
+		/* position: absolute; */
+		top: 100%; /* 바로 아래에 표시 */
+		left: 0;
+		width: 100%;
+		background-color: var(--main-background-color);
+		z-index: 1;
+}
+	
+	li ul {
+		display: none;
 	}
 }

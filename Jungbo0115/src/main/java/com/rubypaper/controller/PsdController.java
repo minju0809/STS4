@@ -18,24 +18,24 @@ import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 public class PsdController {
-	
+
 	@Autowired
 	private PsdService service;
-	
+
 	@Autowired
 	private HttpServletRequest request;
-	
+
 	@GetMapping("getPsdList.do")
 	String getPsdList(Model model) {
 		model.addAttribute("li", service.getPsdList(null));
-		
+
 		return "/psd/getPsdList";
 	}
-	
+
 	@GetMapping("getPsd.do")
 	String getPsd(Model model, PsdVO vo) {
 		model.addAttribute("m", service.getPsd(vo));
-		
+
 		return "/psd/getPsd";
 	}
 
@@ -44,59 +44,58 @@ public class PsdController {
 		System.out.println("form");
 		return "/psd/psdForm";
 	}
-	
+
 	@PostMapping("psdInsert.do")
 	String psdInsert(PsdVO vo) throws Exception, IOException {
-		
+
 		String path = request.getSession().getServletContext().getRealPath("/psd/img/");
-		System.out.println("path: "+path);
-		
+		System.out.println("path: " + path);
+
 		// 중복 처리 (시간)
 		long time = System.currentTimeMillis();
 		SimpleDateFormat sdf = new SimpleDateFormat("HHmmss");
 		String sdfStr = sdf.format(time);
-		
-		
-		MultipartFile file = vo.getImg(); // 파일 
+
+		MultipartFile file = vo.getImg(); // 파일
 		String fileName = file.getOriginalFilename();
-		
-		File f = new File(path+fileName); // 경로 안에 있는 파일
-		
-		if(!file.isEmpty()) {
-			if(f.exists()) {
+
+		File f = new File(path + fileName); // 경로 안에 있는 파일
+
+		if (!file.isEmpty()) {
+			if (f.exists()) {
 				String onlyFileName = fileName.substring(0, fileName.lastIndexOf("."));
 				String ext = fileName.substring(fileName.lastIndexOf("."));
-				
+
 				fileName = onlyFileName + "_" + sdfStr + ext;
-			} 
+			}
 			// 실제 파일 저장
-			file.transferTo(new File(path+fileName));
+			file.transferTo(new File(path + fileName));
 		} else {
 			fileName = "space.png";
 		}
-		
+
 		vo.setImgStr(fileName); // 테이블에 파일 이름 저장
-		
+
 		service.insert(vo);
-		
+
 		return "redirect:getPsdList.do";
 	}
-	
+
 	@GetMapping("psdDelete.do")
 	String psdDelete(PsdVO vo) throws Exception, IOException {
 		vo = service.getPsd(vo);
-		
+
 		String defFile = vo.getImgStr();
 		String path = request.getSession().getServletContext().getRealPath("/psd/img/");
-		File f = new File(path+defFile); // 경로 안에 있는 파일
-		
-		if(!defFile.equals("space.png")) {
+		File f = new File(path + defFile); // 경로 안에 있는 파일
+
+		if (!defFile.equals("space.png")) {
 			f.delete();
-		} 
-		
+		}
+
 		service.delete(vo);
-		
+
 		return "redirect:getPsdList.do";
 	}
-	
+
 }
