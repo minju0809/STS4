@@ -42,6 +42,11 @@
 			<version>3.0.3</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+
 		<!--자동으로 톰캣 재시작-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
