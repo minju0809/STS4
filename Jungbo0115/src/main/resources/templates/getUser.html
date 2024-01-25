@@ -3,9 +3,17 @@
 <section>
 
   <p><a href="/main">메인으로 이동</a></p>
-  <div>
+  <div align="center">
+    <!-- 변수에 값 담기 -->
+    <th:block th:with="idx=${user.idx}, username=${user.username}">
+      <!-- 변수 값 태그 밖에서 출력하기 -->
+      idx: [[${idx}]], id: [[${username}]]
+    </th:block>
+    <br>
+    <!-- 값 태그 밖에서 출력하기 -->
+    idx: [[${user.idx}]], id: [[${user.username}]]
     <form action="/update">
-      <table border="1" align="center">
+      <table border="1">
         <tr>
           <th>idx</th>
           <td><input type="text" name="idx" th:value="${user.idx}" readonly></td>
@@ -47,7 +55,7 @@
         <tr>
           <th>grade</th>
           <td>
-						<select name="grade">
+            <select name="grade">
               <td:block th:if="${user.grade == '일반'}">
                 <option value="일반" selected>일반</option>
                 <option value="매니저">매니저</option>
@@ -63,8 +71,8 @@
                 <option value="매니저">매니저</option>
                 <option value="회원1" selected>회원1</option>
               </td:block>
-						</select>
-					</td>
+            </select>
+          </td>
         </tr>
         <tr>
           <td align="center" colspan="2">
