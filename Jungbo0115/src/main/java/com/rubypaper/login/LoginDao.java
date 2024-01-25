@@ -8,6 +8,8 @@ import org.apache.ibatis.annotations.Mapper;
 public interface LoginDao {
   List<LoginVO> getUserList(LoginVO vo);
 
+  LoginVO getUser(LoginVO vo);
+
   LoginVO loginOK(LoginVO vo);
 
   void insert(LoginVO vo);

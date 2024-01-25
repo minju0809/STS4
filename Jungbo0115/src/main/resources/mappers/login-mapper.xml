@@ -8,8 +8,16 @@
 		parameterType="com.rubypaper.login.LoginVO"
 		resultType="com.rubypaper.login.LoginVO">
 
-		select idx, id as username, password, role, name, grade 
+		select trim(idx) as idx, id as username, password, role, name, grade 
 		from member0122 order by idx desc
+	</select>
+
+	<select id="getUser"
+		parameterType="com.rubypaper.login.LoginVO"
+		resultType="com.rubypaper.login.LoginVO">
+
+		select trim(idx) as idx, id as username, password, role, name, grade 
+    from member0122 where trim(idx) = #{idx}
 	</select>
 
 	<select id="loginOK"
@@ -36,7 +44,8 @@
 	<update id="update"
 		parameterType="com.rubypaper.login.LoginVO">
 
-		update member0122 set password = #{password} where id = #{username}
+		update member0122 set id = #{username}, password = #{password}, role = #{role}, name = #{name}, grade = #{grade} 
+		where trim(idx) = #{idx}
 	</update>
 
 </mapper>

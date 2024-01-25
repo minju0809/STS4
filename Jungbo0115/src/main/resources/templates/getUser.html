@@ -1,0 +1,79 @@
+<div th:replace="/include/thymeleafTop"></div>
+
+<section>
+
+  <p><a href="/main">메인으로 이동</a></p>
+  <div>
+    <form action="/update">
+      <table border="1" align="center">
+        <tr>
+          <th>idx</th>
+          <td><input type="text" name="idx" th:value="${user.idx}" readonly></td>
+        </tr>
+        <tr>
+          <th>username</th>
+          <td><input type="text" name="username" th:value="${user.username}"></td>
+        </tr>
+        <tr>
+          <th>password</th>
+          <td><input type="text" name="password" th:value="${user.password}"></td>
+        </tr>
+        <tr>
+          <th>role</th>
+          <td>
+            <select name="role">
+              <td:block th:if="${user.role == 'ROLE_ADMIN'}">
+                <option value="admin" selected>관리자</option>
+                <option value="manager">매니저</option>
+                <option value="member">맴버</option>
+              </td:block>
+              <td:block th:if="${user.role == 'ROLE_MANAGER'}">
+                <option value="admin">관리자</option>
+                <option value="manager" selected>매니저</option>
+                <option value="member">맴버</option>
+              </td:block>
+              <td:block th:if="${user.role == 'ROLE_MEMBER'}">
+                <option value="admin">관리자</option>
+                <option value="manager">매니저</option>
+                <option value="member" selected>맴버</option>
+              </td:block>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <th>name</th>
+          <td><input type="text" name="name" th:value="${user.name}"></td>
+        </tr>
+        <tr>
+          <th>grade</th>
+          <td>
+						<select name="grade">
+              <td:block th:if="${user.grade == '일반'}">
+                <option value="일반" selected>일반</option>
+                <option value="매니저">매니저</option>
+                <option value="회원1">회원1</option>
+              </td:block>
+              <td:block th:if="${user.grade == '매니저'}">
+                <option value="일반">일반</option>
+                <option value="매니저" selected>매니저</option>
+                <option value="회원1">회원1</option>
+              </td:block>
+              <td:block th:if="${user.grade == '회원1'}">
+                <option value="일반">일반</option>
+                <option value="매니저">매니저</option>
+                <option value="회원1" selected>회원1</option>
+              </td:block>
+						</select>
+					</td>
+        </tr>
+        <tr>
+          <td align="center" colspan="2">
+            <input type="submit" value="수정">
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</section>
+
+<div th:replace="/include/thymeleafBottom"></div>

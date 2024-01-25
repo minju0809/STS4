@@ -17,6 +17,11 @@ public class LoginServiceImpl implements LoginService {
   }
 
   @Override
+  public LoginVO getUser(LoginVO vo) {
+    return dao.getUser(vo);
+  }
+
+  @Override
   public LoginVO loginOK(LoginVO vo) {
     return dao.loginOK(vo);
   }
