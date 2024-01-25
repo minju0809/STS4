@@ -3,7 +3,7 @@
 <section>
 
   <p><a href="/main">메인으로 이동</a></p>
-  <p><a href="/userForm">회원등록</a></p>
+  <!-- <p><a href="/userForm">회원등록</a></p> -->
   <div>
     <table border="1" align="center">
       <tr>
@@ -17,7 +17,7 @@
       <tr th:each="board : ${li}">
         <td th:text="${board.idx}">
         <td th:text="${board.username}">
-        <td th:text="${#strings.substring(board.password, 0, 15)}">
+        <td th:text="${#strings.substring(board.password, 0, 7)}">
         <td th:text="${board.role}">
         <td th:text="${board.name}">
         <td th:text="${board.grade}">

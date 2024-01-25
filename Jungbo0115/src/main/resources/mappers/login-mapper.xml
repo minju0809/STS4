@@ -8,7 +8,8 @@
 		parameterType="com.rubypaper.login.LoginVO"
 		resultType="com.rubypaper.login.LoginVO">
 
-		select idx, id as username, password, role, name, grade from member0122
+		select idx, id as username, password, role, name, grade 
+		from member0122 order by idx desc
 	</select>
 
 	<select id="loginOK"

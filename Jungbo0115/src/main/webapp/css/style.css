@@ -98,6 +98,10 @@ td {
 	padding: 0px 4px;
 }
 
+.img {
+	border-radius: 20px;
+}
+
 
 
 /* 모바일 화면 스타일 */

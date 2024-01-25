@@ -29,7 +29,11 @@ public class ThymeleafController {
   }
 
   @GetMapping("/insert")
-  public void insert(Model model, LoginVO vo) {
-    // service.insert(vo);
+  public String insert(Model model, LoginVO vo) {
+    vo.setRole("ROLE_" + vo.getRole().toUpperCase());
+    System.out.println("@@@@" + vo);
+    service.insert(vo);
+
+    return "redirect:/getUserList";
   }
 }
