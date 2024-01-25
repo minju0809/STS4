@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<div th:replace="/include/thymeleafTop"></div>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link type="text/css" rel="stylesheet" href="/css/style.css" />
-  <title>Document</title>
-</head>
+<section>
 
-<body>
   <p><a href="/main">메인으로 이동</a></p>
   <p><a href="/userForm">회원등록</a></p>
   <div>
@@ -31,6 +24,6 @@
       </tr>
     </table>
   </div>
-</body>
+</section>
 
-</html>
+<div th:replace="/include/thymeleafBottom"></div>

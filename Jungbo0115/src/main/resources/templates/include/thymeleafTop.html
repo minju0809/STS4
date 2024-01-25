@@ -1,0 +1,45 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>스프링 게시판</title>
+  <link type="text/css" rel="stylesheet" href="/css/style.css" />
+  <script>
+    // 햄버거 버튼을 클릭할 때 네비게이션 메뉴를 토글하는 함수
+    function toggleNav() {
+      const nav = document.querySelector('.nav-container nav');
+      nav.classList.toggle('nav-visible');
+    }
+  </script>
+</head>
+
+<body>
+  <header>
+    Thymeleaf
+  </header>
+
+  <div class="burger-menu" onclick="toggleNav()">☰</div>
+  <div class="nav-container">
+    <nav>
+      <ul class="menu-list">
+        <li class="menu0">
+          <a href="/">시작페이지로</a>
+        </li>
+        <li class="menu1">
+          <a href="/main">메인으로</a>
+        </li>
+        <li class="menu2">
+          <a href="/getUserList" class="menu1-1">
+            <span>유저목록</span>
+          </a>
+        </li>
+        <li class="menu3">
+          <a href="/userForm" class="menu2-1">
+            <span>유저등록</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>

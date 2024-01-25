@@ -1,22 +1,13 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<div th:replace="/include/thymeleafTop"></div>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link type="text/css" rel="stylesheet" href="/css/style.css" />
-  <title>Document</title>
-</head>
-
-<body>
-  <section>
-    <p><a href="/">시작페이지로 이동</a></p>
-    <p><a href="/getUserList">유저 리스트 이동</a></p>
+<section>
+  <br>
+  <div align="center">
     <br>
     <h1>
       <p th:text="${hello}"></p> 만나서 반갑습니다
     </h1>
-  </section>
-</body>
+</section>
+</div>
 
-</html>
+<div th:replace="/include/thymeleafBottom::footer"></div>

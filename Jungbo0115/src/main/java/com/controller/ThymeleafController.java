@@ -16,7 +16,6 @@ public class ThymeleafController {
 
   @GetMapping("/main")
   public void index(Model model) {
-
     model.addAttribute("hello", "안녕하세요 타임리프입니다");
   }
 
