@@ -1,5 +1,9 @@
 package com.rubypaper;
 
+import java.util.List;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,10 +21,24 @@ class Jungbo0115ApplicationTests {
 	@Autowired
 	private PasswordEncoder encoder;
 
+	@AfterEach // 여러 메서드 중 나중에 실행
+	void printTest() {
+		System.out.println("print test");
+	}
+
 	@Test // id=#{username}
+	void testGetUserList() {
+		System.out.println("=====> Test GetUserList");
+		List<LoginVO> li = service.getUserList(null);
+		for (LoginVO m : li) {
+			System.out.println(m.getIdx() + " : " + m.getUsername());
+		}
+	}
+
+	@BeforeEach // 여러 메서드 중 먼저 실행
 	void testDelete() {
 		LoginVO vo = new LoginVO();
-		vo.setIdx("183");
+		vo.setIdx("188");
 
 		service.delete(vo);
 		System.out.println("=====> Test delete");
