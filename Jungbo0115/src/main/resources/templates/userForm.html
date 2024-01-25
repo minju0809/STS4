@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link type="text/css" rel="stylesheet" href="/css/style.css" />
+  <title>Document</title>
+</head>
+<body>
+  <p><a href="/main">메인으로 이동</a></p>
+  <p><a href="/getUserList">유저목록</a></p>
+  <div align="center">
+    <table border="1">
+      <tr>
+        <th>idx</th>
+        <th>username</th>
+        <th>password</th>
+        <th>role</th>
+        <th>name</th>
+        <th>grade</th>
+      </tr>
+      <tr th:each="board : ${li}">
+        <td th:text="${board.idx}">
+        <td th:text="${board.username}">
+        <td th:text="${#strings.substring(board.password, 0, 15)}">
+        <td th:text="${board.role}">
+        <td th:text="${board.name}">
+        <td th:text="${board.grade}">
+      </tr>
+    </table>
+  </div>
+</body>
+</html>
