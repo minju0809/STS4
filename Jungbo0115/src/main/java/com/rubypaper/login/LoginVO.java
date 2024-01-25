@@ -1,5 +1,7 @@
 package com.rubypaper.login;
 
+import java.io.File;
+
 import lombok.Data;
 
 @Data
@@ -10,4 +12,6 @@ public class LoginVO {
   private String role; // 이름 고정
   private String name;
   private String grade;
+  private String fileStr;
+  private File file;
 }

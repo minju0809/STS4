@@ -8,7 +8,7 @@
 		parameterType="com.rubypaper.login.LoginVO"
 		resultType="com.rubypaper.login.LoginVO">
 
-		select trim(idx) as idx, id as username, password, role, name, grade 
+		select trim(idx) as idx, id as username, password, role, name, grade, fileStr
 		from member0122 order by idx desc
 	</select>
 
@@ -16,7 +16,7 @@
 		parameterType="com.rubypaper.login.LoginVO"
 		resultType="com.rubypaper.login.LoginVO">
 
-		select trim(idx) as idx, id as username, password, role, name, grade 
+		select trim(idx) as idx, id as username, password, role, name, grade, fileStr
     from member0122 where trim(idx) = #{idx}
 	</select>
 
@@ -24,15 +24,15 @@
 		parameterType="com.rubypaper.login.LoginVO"
 		resultType="com.rubypaper.login.LoginVO">
 
-		select idx, id as username, password, role, name, grade 
+		select idx, id as username, password, role, name, grade, fileStr 
     from member0122 where id = #{username}
 	</select>
 
 	<insert id="insert"
 		parameterType="com.rubypaper.login.LoginVO">
 
-		insert into member0122 (idx, id, password, role, name, grade) 
-    values (idx.nextval, #{username}, #{password}, #{role}, #{name}, #{grade})
+		insert into member0122 (idx, id, password, role, name, grade, fileStr) 
+    values (idx.nextval, #{username}, #{password}, #{role}, #{name}, #{grade} #{fileStr})
 	</insert>
 
 	<delete id="delete"
@@ -44,7 +44,7 @@
 	<update id="update"
 		parameterType="com.rubypaper.login.LoginVO">
 
-		update member0122 set id = #{username}, password = #{password}, role = #{role}, name = #{name}, grade = #{grade} 
+		update member0122 set id = #{username}, password = #{password}, role = #{role}, name = #{name}, grade = #{grade}, fileStr = #{fileStr} 
 		where trim(idx) = #{idx}
 	</update>
 

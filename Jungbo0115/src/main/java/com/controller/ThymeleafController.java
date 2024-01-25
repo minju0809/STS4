@@ -28,7 +28,6 @@ public class ThymeleafController {
 
   @GetMapping("/getUser")
   public void getUser(Model model, LoginVO vo) {
-    System.out.println();
     model.addAttribute("user", service.getUser(vo));
   }
 
@@ -39,7 +38,6 @@ public class ThymeleafController {
   @GetMapping("/insert")
   public String insert(Model model, LoginVO vo) {
     vo.setRole("ROLE_" + vo.getRole().toUpperCase());
-    System.out.println("@@@@" + vo);
     service.insert(vo);
 
     return "redirect:/getUserList";
@@ -49,7 +47,6 @@ public class ThymeleafController {
   public String update(Model model, LoginVO vo) {
     vo.setRole("ROLE_" + vo.getRole().toUpperCase());
     service.update(vo);
-    System.out.println("@@@@@@@@@@@@@@@@@@@@수정" + vo);
 
     return "redirect:/getUserList";
   }
