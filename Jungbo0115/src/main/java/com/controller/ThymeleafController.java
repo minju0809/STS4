@@ -1,7 +1,6 @@
 package com.controller;
 
 import java.io.File;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -84,6 +83,23 @@ public class ThymeleafController {
   public String update(Model model, LoginVO vo) {
     vo.setRole("ROLE_" + vo.getRole().toUpperCase());
     service.update(vo);
+
+    return "redirect:/getUserList";
+  }
+
+  @GetMapping("/delete")
+  public String delete(Model model, LoginVO vo) throws Exception {
+    String path = request.getSession().getServletContext().getRealPath("/img/");
+    System.out.println("path: " + path);
+    // C:\Users\4545\Desktop\Jungbo\Jungbo0115\src\main\webapp\img\
+
+    File defF = new File(path + vo.getFileStr());
+
+    if (!vo.getFileStr().equals("space.png")) {
+      defF.delete();
+    }
+
+    service.delete(vo);
 
     return "redirect:/getUserList";
   }

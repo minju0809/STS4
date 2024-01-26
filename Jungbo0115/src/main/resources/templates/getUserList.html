@@ -19,12 +19,13 @@
         <tr th:each="user : ${li}">
           <td th:text="${user.idx}">
           <td><a th:href="@{/getUser(idx=${user.idx}, username=${user.username}, password=${user.password})}"
-            th:text="${user.username}" onClick="move('상세페이지로')"></a></td>
+            th:text="${user.username}"></a></td>
           <td th:text="${#strings.substring(user.password, 0, 15)}">
           <td th:text="${user.role}">
           <td th:text="${user.name}">
           <td th:text="${user.grade}">
-          <td th:text="${user.fileStr}">
+          <td><a th:href="@{/delete(idx=${user.idx}, fileStr=${user.fileStr})}" th:text="${user.fileStr}"></a></td>
+          </td>
           <td><img th:src="@{/img/__${user.fileStr}__}" alt="image" width="50px"></td>
         </tr>
       </table>
