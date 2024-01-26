@@ -48,4 +48,10 @@
 		where trim(idx) = #{idx}
 	</update>
 
+	<update id="updateAll"
+		parameterType="com.rubypaper.login.LoginVO">
+
+		update member0122 set password = #{password} 
+	</update>
+
 </mapper>

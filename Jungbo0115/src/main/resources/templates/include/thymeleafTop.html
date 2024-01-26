@@ -10,25 +10,42 @@
 </head>
 
 <body>
-    <nav id="nav">
-      <div class="list-container">
-        <h2>Thymeleaf</h2>
-        <ul class="list">
-          <li><a href="/" onClick="move('시작페이지로')">시작페이지</a></li>
-          <li><a href="/main" onClick="move('메인으로')">메인</a></li>
-        </ul>
-      </div>
-      <div class="list-container">
-        <h4>유저</h4>
-        <ul class="list">
-          <li><a href="/getUserList" class="menu1-1" onClick="move('유저목록으로')">
-              <span>유저목록</span>
-            </a>
-          </li>
-          <li><a href="/userForm" class="menu2-1" onClick="move('유저등록으로')">
-              <span>유저등록</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+  <nav id="nav">
+    <div class="list-container">
+      <h2>Thymeleaf</h2>
+      <ul class="list">
+        <li><a href="/" onClick="move('시작페이지로')">시작페이지</a></li>
+        <li><a href="/main" onClick="move('메인으로')">메인</a></li>
+      </ul>
+    </div>
+    <div class="list-container">
+      <h4>유저</h4>
+      <ul class="list">
+        <li>
+          <a href="/getUserList" class="menu1-1" onClick="move('유저목록으로')">
+            <span>유저목록</span>
+          </a>
+        </li>
+        <li>
+          <a href="/member/userForm" class="menu2-1" onClick="move('유저등록으로')">
+            <span>유저등록</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="list-container">
+      <h4>로그인</h4>
+      <ul class="list">
+        <li>
+          <a href="/login.do" class="menu1-1" onClick="move()">
+            <span>로그인</span>
+          </a>
+        </li>
+        <li>
+          <a href="/logout" class="menu2-1" onClick="move()">
+            <span>로그아웃</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>

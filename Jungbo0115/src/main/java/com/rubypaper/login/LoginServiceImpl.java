@@ -41,4 +41,9 @@ public class LoginServiceImpl implements LoginService {
     dao.update(vo);
   }
 
+  @Override
+  public void updateAll(LoginVO vo) {
+    dao.updateAll(vo);
+  }
+
 }

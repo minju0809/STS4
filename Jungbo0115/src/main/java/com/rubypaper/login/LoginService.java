@@ -14,4 +14,6 @@ public interface LoginService {
   void delete(LoginVO vo);
 
   void update(LoginVO vo);
+
+  void updateAll(LoginVO vo);
 }

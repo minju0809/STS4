@@ -26,33 +26,32 @@ class Jungbo0115ApplicationTests {
 		System.out.println("print test");
 	}
 
-	@Test // id=#{username}
+	@AfterEach // id=#{username}
 	void testGetUserList() {
 		System.out.println("=====> Test GetUserList");
 		List<LoginVO> li = service.getUserList(null);
 		for (LoginVO m : li) {
-			System.out.println(m.getIdx() + " : " + m.getUsername());
+			System.out.println(m.getIdx() + " : " + m.getUsername() + " : " + m.getPassword());
 		}
 	}
 
-	@BeforeEach // 여러 메서드 중 먼저 실행
-	void testDelete() {
-		LoginVO vo = new LoginVO();
-		vo.setIdx("188");
-
-		service.delete(vo);
-		System.out.println("=====> Test delete");
-	}
-
-	// @Test // id=#{username}
-	// void testUpdate() {
+	// @BeforeEach // 여러 메서드 중 먼저 실행
+	// void testDelete() {
 	// LoginVO vo = new LoginVO();
-	// vo.setUsername("guest2");
-	// vo.setPassword(encoder.encode("guest123"));
+	// vo.setIdx("188");
 
-	// service.update(vo);
-	// System.out.println("=====> Test update");
+	// service.delete(vo);
+	// System.out.println("=====> Test delete");
 	// }
+
+	@Test // id=#{username}
+	void testUpdate() {
+		LoginVO vo = new LoginVO();
+		vo.setPassword(encoder.encode("123"));
+
+		service.updateAll(vo);
+		System.out.println("=====> Test update" + vo);
+	}
 
 	// @Test
 	// void testInsert() {
