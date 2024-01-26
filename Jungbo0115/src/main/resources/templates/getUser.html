@@ -1,8 +1,6 @@
-<div th:replace="/include/thymeleafTop"></div>
+<div th:replace="~{/include/thymeleafTop}"></div>
 
 <section>
-
-  <p><a href="/main">메인으로 이동</a></p>
   <div align="center">
     <!-- 변수에 값 담기 -->
     <th:block th:with="idx=${user.idx}, username=${user.username}">
@@ -84,4 +82,4 @@
   </div>
 </section>
 
-<div th:replace="/include/thymeleafBottom"></div>
+<div th:replace="~{/include/thymeleafBottom}"></div>

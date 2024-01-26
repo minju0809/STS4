@@ -7,44 +7,28 @@
   <title>스프링 게시판</title>
   <link type="text/css" rel="stylesheet" href="/css/style.css" />
   <script src="/js/script.js"></script>
-  <script>
-    // 햄버거 버튼을 클릭할 때 네비게이션 메뉴를 토글하는 함수
-    function toggleNav() {
-      const nav = document.querySelector('.nav-container nav');
-      nav.classList.toggle('nav-visible');
-    }
-    
-    move = (item) => {
-      hello(item);
-    }
-  </script>
 </head>
 
 <body>
-  <header>
-    Thymeleaf
-  </header>
-
-  <div class="burger-menu" onclick="toggleNav()">☰</div>
-  <div class="nav-container">
-    <nav>
-      <ul class="menu-list">
-        <li class="menu0">
-          <a href="/" onClick="move('시작페이지로')">시작페이지</a>
-        </li>
-        <li class="menu1">
-          <a href="/main" onClick="move('메인으로')">메인</a>
-        </li>
-        <li class="menu2">
-          <a href="/getUserList" class="menu1-1" onClick="move('유저목록으로')">
-            <span>유저목록</span>
-          </a>
-        </li>
-        <li class="menu3">
-          <a href="/userForm" class="menu2-1" onClick="move('유저등록으로')">
-            <span>유저등록</span>
-          </a>
-        </li>
-      </ul>
+    <nav id="nav">
+      <div class="list-container">
+        <h2>Thymeleaf</h2>
+        <ul class="list">
+          <li><a href="/" onClick="move('시작페이지로')">시작페이지</a></li>
+          <li><a href="/main" onClick="move('메인으로')">메인</a></li>
+        </ul>
+      </div>
+      <div class="list-container">
+        <h4>유저</h4>
+        <ul class="list">
+          <li><a href="/getUserList" class="menu1-1" onClick="move('유저목록으로')">
+              <span>유저목록</span>
+            </a>
+          </li>
+          <li><a href="/userForm" class="menu2-1" onClick="move('유저등록으로')">
+              <span>유저등록</span>
+            </a>
+          </li>
+        </ul>
+      </div>
     </nav>
-  </div>

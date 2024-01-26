@@ -1,14 +1,15 @@
-<div th:replace="/include/thymeleafTop"></div>
+<div th:replace="~{/include/thymeleafTop}"></div>
 
 <section>
-  <br>
-  <div align="center">
+  <div class="start-container" align=center>
+    <br>
     <br>
     <h1>
       <p th:text="${hello}"></p> 만나서 반갑습니다
     </h1>
+    <br>
     <img class="img" src="/img/image6.png" alt="image">
+  </div>
 </section>
-</div>
 
-<div th:replace="/include/thymeleafBottom::footer"></div>
+<div th:replace="~{/include/thymeleafBottom}"></div>

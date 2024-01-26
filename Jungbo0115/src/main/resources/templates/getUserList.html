@@ -1,8 +1,6 @@
-<div th:replace="/include/thymeleafTop"></div>
+<div th:replace="~{/include/thymeleafTop}"></div>
 
 <section>
-
-  <p><a href="/main">메인으로 이동</a></p>
   <div>
     <form action="/update">
       <table border="1" align="center">
@@ -20,7 +18,7 @@
           <td th:text="${user.idx}">
           <td><a th:href="@{/getUser(idx=${user.idx}, username=${user.username}, password=${user.password})}"
             th:text="${user.username}" onClick="move('상세페이지로')"></a></td>
-          <td th:text="${#strings.substring(user.password, 0, 7)}">
+          <td th:text="${#strings.substring(user.password, 0, 3)}">
           <td th:text="${user.role}">
           <td th:text="${user.name}">
           <td th:text="${user.grade}">
@@ -32,4 +30,4 @@
   </div>
 </section>
 
-<div th:replace="/include/thymeleafBottom"></div>
+<div th:replace="~{/include/thymeleafBottom}"></div>

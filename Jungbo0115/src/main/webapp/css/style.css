@@ -15,7 +15,11 @@
 	--link-color: #rgb(207, 190, 177);
 }
 
-header {
+* {
+	margin: 0;
+}
+
+/* header {
 	border-bottom: 1px solid var(--border-color);
 	background: var(--header-background-color);
 	color: var(--main-color);
@@ -23,7 +27,7 @@ header {
 	line-height: 90px;
 	font-size: 40px;
 	text-align: center;
-}
+} */
 
 .burger-menu {
 	display: none;
@@ -46,9 +50,10 @@ nav {
 	/* border-bottom: 1px solid white; */
 	background: var(--main-background-color);
 	color: var(--main-color);
-	height: 40px;
-	line-height: 40px;
+	height: 60px;
+	line-height: 60px;
 	font-size: 16px;
+	cursor: default;
 }
 
 nav a {
@@ -76,12 +81,12 @@ li {
 }
 
 section {
+	padding: 20px 20px;
 	background: var(--section-background-color);
 	color: var(--main-color);
 	min-height: 500px;
 	line-height: 25px;
 	font-size: 16px;
-	text-align: left;
 }
 
 footer {
@@ -98,142 +103,56 @@ td {
 	padding: 0px 4px;
 }
 
+.start-container {
+	position: absolute;
+	top: 260px;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
 .img {
 	border-radius: 20px;
 }
 
-
-
-/* 모바일 화면 스타일 */
-@media (max-width: 767px) {
-
-	nav {
-		justify-content: flex-start;
-		display: none;
-		/* 기본적으로 숨김 */
-		position: absolute;
-		/* top: 60px; */
-		/* 햄버거 버튼 아래에 위치하도록 조정 */
-		left: 0;
-		right: 0;
-		z-index: 1;
-	}
-
-	nav a {
-		display: block;
-		margin: 0 4px;
-		text-align: left;
-	}
-
-	.nav-container {
-		background: var(--point-background-color);
-	}
-
-	.menu-list {
-		display: flex;
-		list-style: none;
-		padding: 0;
-		margin: 0;
-	}
-
-	.menu-list li {
-		margin-right: 10px;
-		/* 각 항목 사이의 간격을 조절할 수 있습니다. */
-	}
-
-	.burger-menu {
-		display: block;
-	}
-
-	.nav-visible {
-		width: 200px;
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-	}
+#nav {
+	display: flex;
+	z-index: 3;
+	justify-content: space-around;
 }
 
-/* 태블릿 화면 스타일 */
-@media (min-width: 768px) and (max-width: 1023px) {
-	nav {
-		justify-content: flex-start;
-		display: none;
-		/* 기본적으로 숨김 */
-		position: absolute;
-		top: 60px;
-		/* 햄버거 버튼 아래에 위치하도록 조정 */
-		left: 0;
-		right: 0;
-		z-index: 1;
-	}
-
-	nav a {
-		display: block;
-		margin: 0 4px;
-		/* text-align: left; */
-	}
-
-	.nav-container {
-		background: var(--point-background-color);
-	}
-
-
-
-	.burger-menu {
-		display: block;
-	}
-
-	.nav-visible {
-		width: 200px;
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-	}
+#nav.active .list {
+	top: 100%;
+	opacity: 1;
+	visibility: visible;
+	pointer-events: auto;
 }
 
-/* 데스크톱 화면 스타일 */
-@media (min-width: 1024px) {
-	nav {
-		justify-content: space-around;
-		flex-direction: row;
-	}
-	
-	nav a {
-		margin: 0 8px;
-	}
-
-	.nav-container {
-		box-sizing: border-box;
-	}
-	
-	.menu-list {
-		width: 100%;
-		display: flex;
-		justify-content: space-around;
-		list-style: none;
-		padding: 0;
-		margin: 0;
-	}
-
-	.menu {
-		height: 120px;
-	}
-
-	.menu li {
-		width: 200px;
-	}
-
-	nav:hover li ul {
-		display: block;
-		/* position: absolute; */
-		top: 100%; /* 바로 아래에 표시 */
-		left: 0;
-		width: 100%;
-		background-color: var(--main-background-color);
-		z-index: 1;
+#nav a {
+	text-align: center;
 }
-	
-	li ul {
-		display: none;
-	}
+
+.list-container {
+	box-shadow: 0 2px 1px var(--point-color);
+	text-align: center;
+	position: relative;
+	flex: 1;
+}
+
+.list {
+	text-align: center;
+	height: 160px;
+	box-shadow: 0 2px 1px var(--point-color);
+	z-index: 2;
+	position: absolute;
+	top: calc(100% - 100px);
+	width: 100%;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	opacity: 0;
+	visibility: hidden;
+	transition: 0.3s;
+	pointer-events: none;
+
+	background: var(--main-background-color);
 }
