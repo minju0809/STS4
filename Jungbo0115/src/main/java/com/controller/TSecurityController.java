@@ -32,7 +32,7 @@ public class TSecurityController {
     LoginVO vo = new LoginVO();
     vo.setUsername(user.getUsername());
 
-    session.setAttribute("session", service.loginOK(vo));
+    session.setAttribute("user", service.loginOK(vo));
 
     return "/security/loginSuccess.html";
   }

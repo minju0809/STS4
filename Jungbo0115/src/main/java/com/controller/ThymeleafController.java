@@ -45,7 +45,6 @@ public class ThymeleafController {
   public String insert(Model model, LoginVO vo) {
     vo.setPassword(encoder.encode(vo.getPassword()));
     vo.setRole("ROLE_" + vo.getRole().toUpperCase());
-    System.out.println("password: " + vo.getPassword());
     service.insert(vo);
 
     return "redirect:/getUserList";

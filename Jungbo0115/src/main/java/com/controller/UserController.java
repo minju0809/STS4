@@ -33,8 +33,10 @@ public class UserController {
 
   @GetMapping("/insert.do")
   public String insert(LoginVO vo) {
+
     vo.setPassword(encoder.encode(vo.getPassword()));
     vo.setRole("ROLE_" + vo.getRole().toUpperCase());
+
     service.insert(vo);
     return "redirect:/getUserList.do";
   }
