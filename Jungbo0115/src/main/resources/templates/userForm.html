@@ -1,11 +1,10 @@
 <div th:replace="~{/include/thymeleafTop}"></div>
 
 <section>
-
-  <p><a href="/main">메인으로 이동</a></p>
-  <p><a href="/getUserList">유저목록</a></p>
   <div align="center">
-    <form action="/insert">
+    <h2>회원 가입</h2>
+    <br>
+    <form action="/insert" method="post" enctype="multipart/form-data">
       <table border="1">
         <tr>
           <th>username</th>
@@ -37,6 +36,10 @@
 							<option value="회원1">회원1</option>
 						</select>
 					</td>
+          <tr>
+            <th>파일</th>
+            <td><input type="file" name="file"></td>
+          </tr>
         <tr>
           <td align="center" colspan="2">
             <input type="submit" value="저장">

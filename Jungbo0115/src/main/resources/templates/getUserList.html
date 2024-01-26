@@ -1,7 +1,9 @@
 <div th:replace="~{/include/thymeleafTop}"></div>
 
 <section>
-  <div>
+  <div align="center">
+    <h2>유저 목록</h2>
+    <br>
     <form action="/update">
       <table border="1" align="center">
         <tr>
@@ -18,7 +20,7 @@
           <td th:text="${user.idx}">
           <td><a th:href="@{/getUser(idx=${user.idx}, username=${user.username}, password=${user.password})}"
             th:text="${user.username}" onClick="move('상세페이지로')"></a></td>
-          <td th:text="${#strings.substring(user.password, 0, 3)}">
+          <td th:text="${#strings.substring(user.password, 0, 15)}">
           <td th:text="${user.role}">
           <td th:text="${user.name}">
           <td th:text="${user.grade}">

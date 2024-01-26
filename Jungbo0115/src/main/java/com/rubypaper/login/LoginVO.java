@@ -1,6 +1,6 @@
 package com.rubypaper.login;
 
-import java.io.File;
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
 
@@ -13,5 +13,5 @@ public class LoginVO {
   private String name;
   private String grade;
   private String fileStr;
-  private File file;
+  private MultipartFile file;
 }

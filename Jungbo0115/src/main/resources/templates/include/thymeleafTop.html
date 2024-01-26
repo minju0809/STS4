@@ -22,13 +22,13 @@
       <h4>유저</h4>
       <ul class="list">
         <li>
-          <a href="/getUserList" class="menu1-1" onClick="move('유저목록으로')">
-            <span>유저목록</span>
+          <a href="/member/userForm" class="menu2-1">
+            <span>회원가입</span>
           </a>
         </li>
         <li>
-          <a href="/member/userForm" class="menu2-1" onClick="move('유저등록으로')">
-            <span>유저등록</span>
+          <a href="/getUserList" class="menu1-1">
+            <span>유저목록</span>
           </a>
         </li>
       </ul>
@@ -42,15 +42,11 @@
       </h4>
       <ul class="list">
         <li>
-          <a href="/logout" class="menu2-1" onClick="move()">
-            <span th:if="${session.user != null}">
-              로그아웃
-            </span>
+          <a href="/login.do" class="menu1-1" th:if="${session.user == null}">
+            로그인
           </a>
-          <a href="/login.do" class="menu1-1" onClick="move()">
-            <span th:if="${session.user == null}">
-              로그인
-            </span>
+          <a href="/logout" class="menu2-1">
+            로그아웃
           </a>
         </li>
       </ul>
