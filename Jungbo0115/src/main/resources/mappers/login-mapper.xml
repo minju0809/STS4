@@ -31,8 +31,8 @@
 	<insert id="insert"
 		parameterType="com.rubypaper.login.LoginVO">
 
-		insert into member0122 (idx, id, password, role, name, grade, fileStr) 
-    values (idx.nextval, #{username}, #{password}, #{role}, #{name}, #{grade} #{fileStr})
+		insert into member0122 (idx, id, password, role, name, grade) 
+    values (idx.nextval, #{username}, #{password}, #{role}, #{name}, #{grade})
 	</insert>
 
 	<delete id="delete"

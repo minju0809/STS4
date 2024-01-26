@@ -36,6 +36,6 @@ public class UserController {
     vo.setPassword(encoder.encode(vo.getPassword()));
     vo.setRole("ROLE_" + vo.getRole().toUpperCase());
     service.insert(vo);
-    return "redirect:getUserList.do";
+    return "redirect:/getUserList.do";
   }
 }

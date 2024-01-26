@@ -35,13 +35,17 @@ public class ThymeleafController {
     model.addAttribute("user", service.getUser(vo));
   }
 
-  @GetMapping("/userForm")
-  public void userForm() {
+  @GetMapping("/member/userForm")
+  public String userForm() {
+
+    return "userForm";
   }
 
   @GetMapping("/insert")
   public String insert(Model model, LoginVO vo) {
+    vo.setPassword(encoder.encode(vo.getPassword()));
     vo.setRole("ROLE_" + vo.getRole().toUpperCase());
+    System.out.println("password: " + vo.getPassword());
     service.insert(vo);
 
     return "redirect:/getUserList";
