@@ -1,7 +1,23 @@
 <div th:replace="~{/include/thymeleafTop}"></div>
 
+<style>
+  table {
+    width: 800px;
+  }
+
+  tr {
+    text-align: center;
+  }
+
+  .tdleft {
+    text-align: left;
+  }
+</style>
+
 <section>
   <div align=center>
+    <h2>맴버 목록</h2>
+    <br>
     <table border="1">
       <tr>
         <th>순번</th>
@@ -16,9 +32,13 @@
         <td th:text="${member.custno}">
         <td th:text="${member.custname}">
         <td th:text="${member.phone}">
-        <td th:text="${member.address}">
+        <td class="tdleft" th:text="${member.address}">
         <td th:text="${member.joindate.substring(0, 10)}">
-        <td th:text="${member.grade}">
+        <td th:switch="${member.grade}"> 
+          <span th:case="A">VIP</span>
+          <span th:case="B">일반</span>
+          <span th:case="C">직원</span>
+        </td>
         <td th:text="${member.city}">
       </tr>
     </table>
