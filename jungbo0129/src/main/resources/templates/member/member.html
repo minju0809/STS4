@@ -1,0 +1,63 @@
+<div th:replace="~{/include/thymeleafTop}"></div>
+
+
+
+<section>
+  <div align=center>
+    <h2>맴버 상세보기</h2>
+    <br>
+    <form action="">
+      <table border="1">
+        <tr>
+          <th>순번</th>
+          <td><input name="custno" th:value="${member.custno}" readonly></td>
+        </tr>
+        <tr>
+          <th>이름</th>
+          <td><input name="custname" th:value="${member.custname}" readonly></td>
+        </tr>
+        <tr>
+          <th>암호</th>
+          <td><input name="password" th:value="${member.password}"></td>
+        </tr>
+        <tr>
+          <th>번호</th>
+          <td><input name="phone" th:value="${member.phone}"></td>
+        </tr>
+        <tr>
+          <th>참고주소</th>
+          <td>[[${member.address}]]</td>
+        </tr>
+        <tr>
+          <th>주소</th>
+          <td>
+            <input type="text" name="postcode" id="sample6_postcode" placeholder="우편번호">
+            <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+            <input type="text" name="address" id="sample6_address" placeholder="주소" size=50><br>
+            <input type="text" name="detailAddress" id="sample6_detailAddress" placeholder="상세주소">
+            <input type="text" name="extraAddress" id="sample6_extraAddress" placeholder="참고항목">
+          </td>
+        <tr>
+        <tr>
+          <th>가입</th>
+          <td>[[${member.joindate}]]</td>
+        </tr>
+        <tr>
+          <th>등급</th>
+          <td>[[${member.grade}]]</td>
+        </tr>
+        <tr>
+          <th>도시</th>
+          <td>[[${member.city}]]</td>
+        </tr>
+        <tr>
+          <th colspan="2" align="center">
+            <input type="submit" value="수정">
+          </th>
+        </tr>
+      </table>
+    </form>
+  </div>
+</section>
+
+<div th:replace="~{/include/thymeleafBottom}"></div>

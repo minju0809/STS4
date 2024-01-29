@@ -11,6 +11,13 @@
 		select * from member_tbl_02 order by custno desc
 	</select>
 
+  <select id="member"
+		parameterType="com.springboot.jungbo0129.member.MemberVO"
+		resultType="com.springboot.jungbo0129.member.MemberVO">
+
+		select * from member_tbl_02 where custno = #{custno}
+	</select>
+
 	<select id="custno"
 		parameterType="com.springboot.jungbo0129.member.MemberVO"
 		resultType="int">
@@ -18,18 +25,11 @@
 		select max(custno) + 1 from member_tbl_02 
 	</select>
 
-	<select id="memberAdd"
-		parameterType="com.springboot.jungbo0129.member.MemberVO"
-		resultType="com.springboot.jungbo0129.member.MemberVO">
-
-		select max(custno) + 1 as custno, joindate from member_tbl_02 
-	</select>
-
   <insert id="memberInsert"
 		parameterType="com.springboot.jungbo0129.member.MemberVO">
 
-		insert into member_tbl_02 (custno, custname, phone, address, joindate, grade, city) 
-    values (#{custno}, #{custname}, #{phone}, #{address}, #{joindate}, #{grade}, #{city})	
+		insert into member_tbl_02 (custno, custname, password, phone, address, joindate, grade, city) 
+    values (#{custno}, #{custname}, #{password}, #{phone}, #{address}, #{joindate}, #{grade}, #{city})	
   </insert>
 
 </mapper>

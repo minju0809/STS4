@@ -10,19 +10,23 @@
   <div align=center>
     <h2>회원 가입</h2>
     <br>
-    <form name="f1" action="memberInsert" onsubmit="return checkList()">
+    <form name="f1" action="/memberInsert" onsubmit="return checkList()">
       <table border=1>
         <tr>
           <th>순번</th>
-          <td><input type="text" name="custno" th:value="${custno}" /> </td>
+          <td><input type="text" name="custno" th:value="${custno}" /></td>
         </tr>
         <tr>
           <th>회원이름</th>
-          <td><input type="text" name="custname"  /> </td>
+          <td><input type="text" name="custname"  /></td>
+        </tr>
+        <tr>
+          <th>비밀번호</th>
+          <td><input type="text" name="password"  /></td>
         </tr>
         <tr>
           <th>전화번호</th>
-          <td><input type="text" name="phone" /> </td>
+          <td><input type="text" name="phone" /></td>
         </tr>
         <tr>
           <th>주소</th>

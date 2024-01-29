@@ -17,6 +17,11 @@ public class MemberServiceImpl implements MemberService {
   }
 
   @Override
+  public MemberVO member(MemberVO vo) {
+    return dao.member(vo);
+  }
+
+  @Override
   public int custno() {
     return dao.custno();
   }

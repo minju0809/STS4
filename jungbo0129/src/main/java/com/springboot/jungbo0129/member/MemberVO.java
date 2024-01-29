@@ -6,6 +6,7 @@ import lombok.Data;
 public class MemberVO {
   private int custno;
   private String custname;
+  private String password;
   private String phone;
   private String postcode;
   private String address;

@@ -8,6 +8,8 @@ import org.apache.ibatis.annotations.Mapper;
 public interface MemberDao {
   List<MemberVO> memberList(MemberVO vo);
 
+  MemberVO member(MemberVO vo);
+
   int custno();
 
   void memberInsert(MemberVO vo);

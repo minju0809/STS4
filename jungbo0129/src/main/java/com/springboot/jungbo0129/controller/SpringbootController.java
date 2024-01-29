@@ -31,6 +31,14 @@ public class SpringbootController {
     return "/member/memberList.html";
   }
 
+  @GetMapping("/member")
+  public String member(Model model, MemberVO vo) {
+
+    model.addAttribute("member", service.member(vo));
+
+    return "member/member.html";
+  }
+
   @GetMapping("/memberForm")
   public String memberForm(Model model, MemberVO vo) {
 
