@@ -19,25 +19,6 @@
 	margin: 0;
 }
 
-/* header {
-	border-bottom: 1px solid var(--border-color);
-	background: var(--header-background-color);
-	color: var(--main-color);
-	height: 90px;
-	line-height: 90px;
-	font-size: 40px;
-	text-align: center;
-} */
-
-.burger-menu {
-	display: none;
-	cursor: pointer;
-	font-size: 20px;
-	position: absolute;
-	top: 10px;
-	left: 10px;
-}
-
 nav {
 	display: flex;
 	align-items: center;

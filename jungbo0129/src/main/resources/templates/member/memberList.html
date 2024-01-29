@@ -1,0 +1,28 @@
+<div th:replace="~{/include/thymeleafTop}"></div>
+
+<section>
+  <div align=center>
+    <table border="1">
+      <tr>
+        <th>순번</th>
+        <th>이름</th>
+        <th>번호</th>
+        <th>주소</th>
+        <th>가입</th>
+        <th>등급</th>
+        <th>도시</th>
+      </tr>
+      <tr th:each="member : ${li}">
+        <td th:text="${member.custno}">
+        <td th:text="${member.custname}">
+        <td th:text="${member.phone}">
+        <td th:text="${member.address}">
+        <td th:text="${member.joindate.substring(0, 10)}">
+        <td th:text="${member.grade}">
+        <td th:text="${member.city}">
+      </tr>
+    </table>
+  </div>
+</section>
+
+<div th:replace="~{/include/thymeleafBottom}"></div>
