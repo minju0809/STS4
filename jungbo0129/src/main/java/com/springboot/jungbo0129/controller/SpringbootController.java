@@ -48,6 +48,11 @@ public class SpringbootController {
   public String memberInsert(MemberVO vo) {
     System.out.println("===> insert" + vo);
 
+    String address = "(" + vo.getPostcode() + ") " + vo.getAddress() + ", "
+        + vo.getDetailAddress() + " " + vo.getExtraAddress();
+    vo.setAddress(address);
+    System.out.println("주소: " + vo.getAddress());
+
     service.memberInsert(vo);
 
     return "redirect:/memberList";
