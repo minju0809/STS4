@@ -10,12 +10,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.springboot.jungbo0129.member.MemberService;
 import com.springboot.jungbo0129.member.MemberVO;
+import com.springboot.jungbo0129.money.MoneyService;
 
 @Controller
 public class SpringbootController {
 
   @Autowired
   private MemberService service;
+
+  @Autowired
+  private MoneyService moneyService;
 
   @GetMapping("/main.do")
   public String main() {
@@ -76,6 +80,14 @@ public class SpringbootController {
     service.memberUpdate(vo);
 
     return "redirect:/memberList";
+  }
+
+  @GetMapping("/moneyList")
+  public String moneyList(Model model) {
+
+    model.addAttribute("li", moneyService.moneyList(null));
+
+    return "money/moneyList.html";
   }
 
 }

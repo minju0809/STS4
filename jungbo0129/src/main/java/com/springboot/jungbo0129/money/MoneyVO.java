@@ -1,5 +1,7 @@
 package com.springboot.jungbo0129.money;
 
+import java.util.Date;
+
 import lombok.Data;
 
 @Data
@@ -10,5 +12,5 @@ public class MoneyVO {
   private int amount;
   private int price;
   private String pcode;
-  private String sdate;
+  private Date sdate;
 }

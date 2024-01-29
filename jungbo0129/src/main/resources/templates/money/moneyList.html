@@ -1,0 +1,40 @@
+<div th:replace="~{/include/thymeleafTop}"></div>
+
+<style>
+  tr {
+    text-align: center;
+  }
+
+  .tdleft {
+    text-align: left;
+  }
+</style>
+
+<section>
+  <div align=center>
+    <h2>회원 매출 조회</h2>
+    <br>
+    <table border="1">
+      <tr>
+        <th>custno</th>
+        <th>salenol</th>
+        <th>pcost</th>
+        <th>amount</th>
+        <th>price</th>
+        <th>pcode</th>
+        <th>sdate</th>
+      </tr>
+      <tr th:each="money : ${li}">
+        <td th:text="${money.custno}">
+        <td th:text="${money.salenol}">
+        <td th:text="${money.pcost}">
+        <td th:text="${money.amount}">
+        <td th:text="${money.price}">
+        <td th:text="${money.pcode}">
+        <td th:text="${#dates.format(money.sdate, 'yyyy년MM월dd일')}"></td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<div th:replace="~{/include/thymeleafBottom}"></div>
