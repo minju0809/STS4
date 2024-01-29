@@ -10,4 +10,6 @@ public interface MemberService {
   int custno();
 
   void memberInsert(MemberVO vo);
+
+  void memberUpdate(MemberVO vo);
 }

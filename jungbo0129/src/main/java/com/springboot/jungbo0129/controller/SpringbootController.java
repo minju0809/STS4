@@ -66,4 +66,16 @@ public class SpringbootController {
     return "redirect:/memberList";
   }
 
+  @GetMapping("/memberUpdate")
+  public String memberUpdate(MemberVO vo) {
+
+    String address = "(" + vo.getPostcode() + ") " + vo.getAddress() + ", "
+        + vo.getDetailAddress() + " " + vo.getExtraAddress();
+    vo.setAddress(address);
+
+    service.memberUpdate(vo);
+
+    return "redirect:/memberList";
+  }
+
 }

@@ -32,4 +32,13 @@
     values (#{custno}, #{custname}, #{password}, #{phone}, #{address}, #{joindate}, #{grade}, #{city})	
   </insert>
 
+  <update id="memberUpdate"
+		parameterType="com.springboot.jungbo0129.member.MemberVO">
+
+		update member_tbl_02 
+    set custname=#{custname}, password=#{password}, 
+    phone=#{phone}, address=#{address} 
+    where custno=#{custno}
+  </update>
+
 </mapper>
