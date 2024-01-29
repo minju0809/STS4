@@ -1,5 +1,7 @@
 package com.springboot.jungbo0129.member;
 
+import java.util.Date;
+
 import lombok.Data;
 
 @Data
@@ -12,7 +14,7 @@ public class MemberVO {
   private String address;
   private String detailAddress;
   private String extraAddress;
-  private String joindate;
+  private Date joindate;
   private String grade;
   private String city;
 }

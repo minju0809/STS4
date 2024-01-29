@@ -13,4 +13,7 @@ public class MoneyVO {
   private int price;
   private String pcode;
   private Date sdate;
+
+  private String custname;
+  private String grade;
 }

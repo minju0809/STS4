@@ -27,15 +27,15 @@
       </tr>
       <tr th:each="member : ${li}">
         <td>
-          <a th:href="@{'/member?custno=' + ${member.custno}}"> <!-- /member.do 경로에 custno 추가 -->
+          <a th:href="@{'/member?custno=' + ${member.custno}}">
             <span th:text="${member.custno}"></span>
-        </a>
+          </a>
         <td th:text="${member.custname}">
         <td th:text="${member.password}">
         <td th:text="${member.phone}">
         <td class="tdleft" th:text="${member.address}">
-        <td th:text="${member.joindate.substring(0, 10)}">
-        <td th:switch="${member.grade}"> 
+        <td th:text="${#dates.format(member.joindate, 'yyyy년MM월dd일')}">
+        <td th:switch="${member.grade}">
           <span th:case="A">VIP</span>
           <span th:case="B">일반</span>
           <span th:case="C">직원</span>
