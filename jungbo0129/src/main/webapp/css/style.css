@@ -1,0 +1,158 @@
+@charset "UTF-8";
+
+:root {
+	--main-background-color: #fffbfb;
+	--header-background-color: #fff;
+	--section-background-color: #E7E8EC;
+	--footer-background-color: #F4F5F6;
+
+	/* CSS 전역 변수 선언 */
+	--check-color: #303e3d;
+	--check2-color: #772b31;
+	--point-background-color: #F6F5F1;
+	--border-color: rgb(228, 228, 228);
+	--main-color: #000;
+	--link-color: #rgb(207, 190, 177);
+}
+
+* {
+	margin: 0;
+}
+
+/* header {
+	border-bottom: 1px solid var(--border-color);
+	background: var(--header-background-color);
+	color: var(--main-color);
+	height: 90px;
+	line-height: 90px;
+	font-size: 40px;
+	text-align: center;
+} */
+
+.burger-menu {
+	display: none;
+	cursor: pointer;
+	font-size: 20px;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+
+nav {
+	display: flex;
+	align-items: center;
+	background-color: #333;
+	color: #fff;
+	padding: 4px;
+	position: relative;
+	text-align: left;
+
+	/* border-bottom: 1px solid white; */
+	background: var(--main-background-color);
+	color: var(--main-color);
+	height: 60px;
+	line-height: 60px;
+	font-size: 16px;
+	cursor: default;
+}
+
+nav a {
+	display: block;
+	text-decoration: none;
+}
+
+th {
+	font-weight: bold;
+	background: var(--point-background-color);
+}
+
+a {
+	text-decoration: none;
+	color: var(--link-color);
+	font-weight: bold;
+}
+
+ul {
+	text-align: center;
+}
+
+li {
+	list-style-type: none;
+}
+
+section {
+	padding: 20px 20px;
+	background: var(--section-background-color);
+	color: var(--main-color);
+	min-height: 500px;
+	line-height: 25px;
+	font-size: 16px;
+}
+
+footer {
+	border-top: 1px solid var(--border-color);
+	background: var(--footer-background-color);
+	color: var(--main-color);
+	height: 50px;
+	line-height: 50px;
+	font-size: 16px;
+	text-align: center;
+}
+
+td {
+	padding: 0px 4px;
+}
+
+.start-container {
+	position: absolute;
+	top: 260px;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.img {
+	border-radius: 20px;
+}
+
+#nav {
+	display: flex;
+	z-index: 3;
+	justify-content: space-around;
+}
+
+#nav.active .list {
+	top: 100%;
+	opacity: 1;
+	visibility: visible;
+	pointer-events: auto;
+}
+
+#nav a {
+	text-align: center;
+}
+
+.list-container {
+	box-shadow: 0 2px 1px var(--point-color);
+	text-align: center;
+	position: relative;
+	flex: 1;
+}
+
+.list {
+	text-align: center;
+	height: 160px;
+	box-shadow: 0 2px 1px var(--point-color);
+	z-index: 2;
+	position: absolute;
+	top: calc(100% - 100px);
+	width: 100%;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	opacity: 0;
+	visibility: hidden;
+	transition: 0.3s;
+	pointer-events: none;
+
+	background: var(--main-background-color);
+}

@@ -1,0 +1,53 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>스프링 게시판</title>
+  <link type="text/css" rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+  <nav id="nav">
+    <div class="list-container">
+      <h2>Thymeleaf</h2>
+      <ul class="list">
+        <li><a href="/">시작페이지</a></li>
+        <li><a href="/main.do">메인</a></li>
+      </ul>
+    </div>
+    <div class="list-container">
+      <h4>유저</h4>
+      <ul class="list">
+        <li>
+          <a href="/member/userForm" class="menu2-1">
+            <span>회원가입</span>
+          </a>
+        </li>
+        <li>
+          <a href="/getUserList" class="menu1-1">
+            <span>유저목록</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="list-container">
+      <h4 th:if="${session.user != null}">
+        [[${session.user.username}]]([[${session.user.name}]])
+      </h4>
+      <h4 th:if="${session.user == null}">
+        로그인
+      </h4>
+      <ul class="list">
+        <li>
+          <a href="/login.do" class="menu1-1" th:if="${session.user == null}">
+            로그인
+          </a>
+          <a href="/logout" class="menu2-1">
+            로그아웃
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
