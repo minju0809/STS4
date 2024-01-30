@@ -1,0 +1,24 @@
+<div th:replace="~{/include/thymeleafTop}"></div>
+
+<section>
+  <div align=center>
+    <h2>방명록</h2>
+    <br>
+    <table border="1">
+      <tr>
+        <th>idx</th>
+        <th>name</th>
+        <th>memo</th>
+        <th>today</th>
+      </tr>
+      <tr th:each="guestbook : ${li}">
+        <td th:text="${guestbook.idx}">
+        <td th:text="${guestbook.name}">
+        <td th:text="${guestbook.memo}">
+        <td th:text="${guestbook.today}">
+      </tr>
+    </table>
+  </div>
+</section>
+
+<div th:replace="~{/include/thymeleafBottom}"></div>

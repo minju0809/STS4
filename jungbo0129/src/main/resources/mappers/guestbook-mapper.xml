@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.springboot.jungbo0129.guestbook.GuestbookDao">
+	
+	<select id="guestbookList"
+		parameterType="com.springboot.jungbo0129.guestbook.GuestbookVO"
+		resultType="com.springboot.jungbo0129.guestbook.GuestbookVO">
+
+		select * from guestbook order by idx desc
+	</select>
+
+  <insert id="guestbookAdd"
+		parameterType="com.springboot.jungbo0129.guestbook.GuestbookVO">
+
+		insert into guestbook (idx, name, memo)
+    values ((select max(idx) + 1 from guestbook), #{name}, #{memo})
+	</insert>
+
+</mapper>
