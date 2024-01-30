@@ -5,5 +5,7 @@ import java.util.List;
 public interface GuestbookService {
   List<GuestbookVO> guestbookList(GuestbookVO vo);
 
+  int guestbookCount(GuestbookVO vo);
+
   void guestbookAdd(GuestbookVO vo);
 }

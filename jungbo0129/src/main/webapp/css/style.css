@@ -137,3 +137,10 @@ td {
 
 	background: var(--main-background-color);
 }
+
+.record-info {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	margin: 0 12px 4px 12px;
+}

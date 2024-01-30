@@ -20,6 +20,45 @@ public class GuestbookController {
   @GetMapping("/guestbookList")
   String guestbookList(Model model, GuestbookVO vo) {
 
+    int start = 0;
+    int pageSize = 10;
+    int pageListSize = 10;
+    int guestbookCount = service.guestbookCount(vo);
+
+    if (vo.getStart() == 0) {
+      start = 1;
+    } else {
+      start = vo.getStart();
+    }
+
+    int end = start + pageSize - 1;
+
+    int totalPage = (guestbookCount / pageSize) + 1;
+    int currentPage = (start / pageSize) + 1;
+    int lastPage = (totalPage - 1) * pageSize + 1;
+    int listStartPage = (currentPage - 1) / pageListSize * pageListSize + 1;
+    int listEndPage = listStartPage + pageListSize - 1;
+
+    vo.setStart(start);
+    vo.setPageSize(pageSize);
+    vo.setEnd(end);
+
+    model.addAttribute("guestbookCount", guestbookCount);
+    model.addAttribute("start", start);
+    model.addAttribute("pageSize", pageSize);
+    model.addAttribute("end", end);
+    model.addAttribute("totalPage", totalPage);
+    model.addAttribute("currentPage", currentPage);
+    model.addAttribute("lastPage", lastPage);
+
+    model.addAttribute("pageListSize", pageListSize);
+    model.addAttribute("listStartPage", listStartPage);
+    model.addAttribute("listEndPage", listEndPage);
+
+    // 검색 후 이동 시에 결과값 유지를 위해 필요
+    model.addAttribute("ch1", vo.getCh1());
+    model.addAttribute("ch2", vo.getCh2());
+
     model.addAttribute("li", service.guestbookList(vo));
 
     return "/guestbook/guestbookList.html";

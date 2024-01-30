@@ -9,7 +9,9 @@
 		resultType="com.springboot.jungbo0129.guestbook.GuestbookVO">
 
     <![CDATA[
-    select * from guestbook where 1=1
+		select rownum, q.* from 
+			(select rownum as rnum, k.* from 
+				(select * from guestbook where 1=1
 		]]>
 		<if test="ch1=='name'">
 		<![CDATA[
@@ -21,9 +23,34 @@
 			and memo like '%'||#{ch2}||'%'
 		]]>
 		</if>
+		<if test="ch1=='today'">
 		<![CDATA[
-			order by idx desc
+			and today like '%'||#{ch2}||'%'
 		]]>
+		</if>
+		<![CDATA[
+			order by idx desc) k
+			where rownum <= #{end} ) q
+		where rnum >= #{start}
+		]]>
+	</select>
+
+  <select id="guestbookCount" 
+    parameterType="com.springboot.jungbo0129.guestbook.GuestbookVO"
+    resultType="int">
+    <![CDATA[
+				select count(*) as count from guestbook where 1=1
+		]]>
+		<if test="ch1=='name'">
+		<![CDATA[
+			and name like '%'||#{ch2}||'%'
+		]]>
+		</if>
+		<if test="ch1=='memo'">
+		<![CDATA[	
+			and memo like '%'||#{ch2}||'%'
+		]]>
+		</if>
 	</select>
 
   <insert id="guestbookAdd"
