@@ -4,6 +4,15 @@
   <div align=center>
     <h2>방명록</h2>
     <br>
+    <form action="/guestbookList?ch1=${ch1}&ch2=${ch2}">
+      <select name="ch1" >
+        <option value="name">이름</option>
+        <option value="memo">메모</option>
+      </select>
+      <input type="text" name="ch2">
+      <input type="submit" value="검색">
+    </form>
+    <br>
     <table border="1">
       <tr>
         <th>idx</th>

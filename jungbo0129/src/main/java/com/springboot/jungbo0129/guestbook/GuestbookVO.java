@@ -8,4 +8,7 @@ public class GuestbookVO {
   private String name;
   private String memo;
   private String today;
+
+  private String ch1;
+  private String ch2;
 }

@@ -8,7 +8,22 @@
 		parameterType="com.springboot.jungbo0129.guestbook.GuestbookVO"
 		resultType="com.springboot.jungbo0129.guestbook.GuestbookVO">
 
-		select * from guestbook order by idx desc
+    <![CDATA[
+    select * from guestbook where 1=1
+		]]>
+		<if test="ch1=='name'">
+		<![CDATA[
+			and name like '%'||#{ch2}||'%'
+		]]>
+		</if>
+		<if test="ch1=='memo'">
+		<![CDATA[	
+			and memo like '%'||#{ch2}||'%'
+		]]>
+		</if>
+		<![CDATA[
+			order by idx desc
+		]]>
 	</select>
 
   <insert id="guestbookAdd"
