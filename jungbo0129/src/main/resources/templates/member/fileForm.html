@@ -1,0 +1,34 @@
+<div th:replace="~{/include/thymeleafTop}"></div>
+
+<style>
+  th {
+    text-align: center;
+  }
+</style>
+
+<section>
+  <div align=center>
+    <h2>사진 등록</h2>
+    <br>
+    <form name="f1" action="/fileInsert" method="post" enctype="multipart/form-data">
+      <table border=1>
+        <tr>
+          <th>custno</th>
+          <td><input type="text" name="custno"  /></td>
+        </tr>
+        <tr>
+          <th>사진</th>
+          <td><input type="file" name="file" /></td>
+        </tr>
+        <tr>
+          <th colspan=2 align="center">
+            <input type=submit value="등록">
+            <input type=button value="조회" onclick="location.href='/memberList'">
+          </th>
+        </tr>
+      </table>
+    </form>
+  </div>
+</section>
+
+<div th:replace="~{/include/thymeleafBottom}"></div>

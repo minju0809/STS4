@@ -39,7 +39,7 @@
         var color = ["silver", "gold", "#e5e4e2", "#b87333", "#fffaaa", "#333abc"];
         var data = google.visualization.arrayToDataTable([
           ["Element", "매출액", { role: "style" }],
-          /*[# th:each="m, i : ${li}"]*/
+          /*[# th:each="m : ${li}"]*/
           ["[(${m.custname})]", [(${m.price})], color[Math.floor(Math.random() * color.length)]],
           /*[/]*/
         ]);

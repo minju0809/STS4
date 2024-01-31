@@ -11,5 +11,7 @@ public interface MemberService {
 
   void memberInsert(MemberVO vo);
 
+  void fileInsert(MemberVO vo);
+
   void memberUpdate(MemberVO vo);
 }

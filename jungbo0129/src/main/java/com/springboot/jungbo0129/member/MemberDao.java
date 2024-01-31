@@ -14,5 +14,7 @@ public interface MemberDao {
 
   void memberInsert(MemberVO vo);
 
+  void fileInsert(MemberVO vo);
+
   void memberUpdate(MemberVO vo);
 }

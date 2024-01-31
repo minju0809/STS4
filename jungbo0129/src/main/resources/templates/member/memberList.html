@@ -24,6 +24,8 @@
         <th>가입</th>
         <th>등급</th>
         <th>도시</th>
+        <th>사진</th>
+        <th>사진</th>
       </tr>
       <tr th:each="member : ${li}">
         <td>
@@ -41,6 +43,10 @@
           <span th:case="C">직원</span>
         </td>
         <td th:text="${member.city}">
+        <td th:text="${member.files}">
+        <td>
+          <img th:src="@{/img/member/__${member.files}__}" alt="image" width="50">
+        </td>
       </tr>
     </table>
   </div>

@@ -8,7 +8,11 @@
 		parameterType="com.springboot.jungbo0129.member.MemberVO"
 		resultType="com.springboot.jungbo0129.member.MemberVO">
 
-		select * from member_tbl_02 order by custno desc
+		<!-- select * from member_tbl_02 order by custno desc -->
+		select m.custno as custno, custname, password, phone, address, joindate, 
+			grade, city, trim(nvl(files, 'space.png')) as files 
+			from member_tbl_02 m left join memberFile mf
+			on m.custno = mf.custno
 	</select>
 
   <select id="member"
@@ -30,6 +34,13 @@
 
 		insert into member_tbl_02 (custno, custname, password, phone, address, joindate, grade, city) 
     values (#{custno}, #{custname}, #{password}, #{phone}, #{address}, #{joindate}, #{grade}, #{city})	
+  </insert>
+
+	<insert id="fileInsert"
+		parameterType="com.springboot.jungbo0129.member.MemberVO">
+
+		insert into memberFile (idx, custno, files) 
+    values ((select max(idx)+1 from memberFile), #{custno}, #{files})	
   </insert>
 
   <update id="memberUpdate"

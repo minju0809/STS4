@@ -30,6 +30,11 @@ public class MemberServiceImpl implements MemberService {
   public void memberInsert(MemberVO vo) {
     dao.memberInsert(vo);
   }
+  
+    @Override
+    public void fileInsert(MemberVO vo) {
+      dao.fileInsert(vo);
+    }
 
   @Override
   public void memberUpdate(MemberVO vo) {
