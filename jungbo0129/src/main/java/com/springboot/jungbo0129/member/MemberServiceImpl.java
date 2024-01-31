@@ -40,5 +40,4 @@ public class MemberServiceImpl implements MemberService {
   public void memberUpdate(MemberVO vo) {
     dao.memberUpdate(vo);
   }
-
 }

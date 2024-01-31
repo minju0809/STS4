@@ -10,11 +10,15 @@
   <div align=center>
     <h2>사진 등록</h2>
     <br>
-    <form name="f1" action="/fileInsert" method="post" enctype="multipart/form-data">
+    <form name="f1" action="/fileInsert" method="post" enctype="multipart/form-data"
+      onsubmit="return formCk()">
       <table border=1>
         <tr>
           <th>custno</th>
-          <td><input type="text" name="custno"  /></td>
+          <td>
+            <input type="text" name="custno" id="custno"  />
+            <input  type=button value="custno체크" id="custnoBtn">
+          </td>
         </tr>
         <tr>
           <th>사진</th>
@@ -30,5 +34,39 @@
     </form>
   </div>
 </section>
+
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    $(document).ready(function(){
+        $("#custnoBtn").click(function(){
+            var custnoVal = $("#custno").val();
+            var data = { custno: custnoVal };
+
+            $.ajax({
+                type: "GET",
+                url: /*[[@{/custnoCk.do}]]*/,
+                data: data,
+                success: function(data){
+                    if (data === "T"){
+                        alert("사진 등록이 불가능합니다.");
+                    } else {
+                        alert("사진 등록이 가능합니다.");
+                        $("#custno").focus();
+                    }
+                }
+            });
+        });
+    });
+
+    function formCk() {
+        if (f1.custno.value.length !== 6) {
+            alert("6자리 custno을 입력해 주세요!!");
+            f1.custno.value = "";
+            return false;
+        }
+    }
+    /*]]>*/
+</script>
 
 <div th:replace="~{/include/thymeleafBottom}"></div>

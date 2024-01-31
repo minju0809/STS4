@@ -12,7 +12,7 @@
 		select m.custno as custno, custname, password, phone, address, joindate, 
 			grade, city, trim(nvl(files, 'space.png')) as files 
 			from member_tbl_02 m left join memberFile mf
-			on m.custno = mf.custno
+			on m.custno = mf.custno order by custno desc
 	</select>
 
   <select id="member"

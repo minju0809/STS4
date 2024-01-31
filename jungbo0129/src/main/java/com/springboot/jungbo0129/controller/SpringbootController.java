@@ -2,6 +2,7 @@ package com.springboot.jungbo0129.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.springboot.jungbo0129.member.MemberService;
@@ -17,6 +19,7 @@ import com.springboot.jungbo0129.member.MemberVO;
 import com.springboot.jungbo0129.money.MoneyService;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 @Controller
 public class SpringbootController {
@@ -140,5 +143,19 @@ public class SpringbootController {
 
     return "/money/moneyList.html";
   }
+
+  @GetMapping("/custnoCk.do")
+	public void custnoCk(MemberVO vo , HttpServletResponse  response) throws Exception {
+		
+		PrintWriter out = response.getWriter();
+		
+		if (service.member(vo) == null) {
+			System.out.println("T확인");
+			out.print("T");			
+		}else {
+			System.out.println("F확인");
+			out.print("F");
+		}
+	}
 
 }
