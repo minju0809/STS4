@@ -22,12 +22,50 @@
         <th>price</th>
       </tr>
       <tr th:each="money : ${li}">
-        <td th:text="${money.custno}">
-        <td th:text="${money.custname}">
-        <td th:text="${money.grade}">
-        <td th:text="${money.price}">
+        <td th:text="${money.custno}">custno</td>
+        <td th:text="${money.custname}">custname</td>
+        <td th:text="${money.grade}">grade</td>
+        <td th:text="${money.price}">price</td>
       </tr>
     </table>
+    <div id="columnchart_values" style="width: 1000px; height: 500px;"></div>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" th:inline="javascript">
+      google.charts.load("current", { packages: ['corechart'] });
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var color = ["silver", "gold", "#e5e4e2", "#b87333", "#fffaaa", "#333abc"];
+        var data = google.visualization.arrayToDataTable([
+          ["Element", "매출액", { role: "style" }],
+          /*[# th:each="m, i : ${li}"]*/
+          ["[(${m.custname})]", [(${m.price})], color[Math.floor(Math.random() * color.length)]],
+          /*[/]*/
+        ]);
+
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
+          {
+            calc: "stringify",
+            sourceColumn: 1,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+            type: "string",
+            role: "annotation"
+          },
+          2]);
+
+        var options = {
+          title: " ",
+          width: 1000,
+          height: 500,
+          bar: { groupWidth: "85%" },
+          legend: { position: "none" },
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+        chart.draw(view, options);
+      }
+    </script>
   </div>
 </section>
 

@@ -17,16 +17,6 @@
       <div>8. 가로 하단 마지막 : [[${listEndPage}]]</div>
     </div>
     <br>
-    <form action="/guestbookList">
-    <input type="hidden" name="start" th:value="${start}">
-      <select name="ch1">
-        <option value="name">이름</option>
-        <option value="memo">메모</option>
-      </select>
-      <input type="text" name="ch2">
-      <input type="submit" value="검색">
-    </form>
-    <br>
     <table border="1">
       <tr>
         <th>rownum</th>
@@ -40,16 +30,26 @@
         <td th:text="${guestbook.rownum}">
         <td th:text="${guestbook.rnum}">
         <td th:text="${guestbook.idx}">
-        <td th:text="${guestbook.name}">
-        <td th:text="${guestbook.memo}">
-        <td th:text="${guestbook.today}">
-      </tr>
+          <td th:text="${guestbook.name}">
+            <td th:text="${guestbook.memo}">
+              <td th:text="${guestbook.today}">
+              </tr>
       <tr>
         <td align="center" colspan="4" th:if="${li.isEmpty()}">검색 결과가 없습니다.
         </td>
       </tr>
     </table>
-
+    <br>
+    <form action="/guestbookList">
+    <input type="hidden" name="start" th:value="${start}">
+      <select name="ch1">
+        <option value="name">이름</option>
+        <option value="memo">메모</option>
+      </select>
+      <input type="text" name="ch2">
+      <input type="submit" value="검색">
+    </form>
+    
     <div style="margin: 8px 0;">
       <a class="button" th:href="@{/guestbookList(start=1, ch1=${ch1}, ch2=${ch2})}">처음으로</a>
 
