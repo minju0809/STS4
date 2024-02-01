@@ -16,33 +16,65 @@
     <br>
     <table border="1">
       <tr>
+        <td colspan="2">
+          <div id="map" style="width:100%;height:350px;"></div>
+        </td>
+      </tr>
+      <tr>
         <th>idx</th>
-        <td th:text="${data.idx}">
+        <td th:text="${data.idx}"></td>
       </tr>
       <th>cnterNm</th>
-      <td th:text="${data.cnterNm}">
+      <td th:text="${data.cnterNm}"></td>
         <tr>
           <th>cnterChNm</th>
-          <td th:text="${data.cnterChNm}">
+          <td th:text="${data.cnterChNm}"></td>
         </tr>
         <tr>
           <th>lat</th>
-          <td th:text="${data.lat}">
+          <td th:text="${data.lat}"></td>
         </tr>
         <tr>
           <th>lot</th>
-          <td th:text="${data.lot}">
+          <td th:text="${data.lot}"></td>
         </tr>
         <tr>
           <th>hmpgAddr</th>
-          <td th:text="${data.roadNmAddr}">
+          <td th:text="${data.roadNmAddr}"></td>
         </tr>
         <tr>
           <th>roadNmAddr</th>
-          <td th:text="${data.hmpgAddr}">
+          <td th:text="${data.hmpgAddr}"></td>
         </tr>
     </table>
   </div>
 </section>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5fd42cdd845577dc157f2510c3e96a73"></script>
+<script>
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng('[[${data.lat}]]', '[[${data.lot}]]'), // 위도와 경도를 동적으로 설정
+        level: 3 // 지도의 확대 레벨
+    };
+
+var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+// 마커가 표시될 위치입니다 
+var markerPosition  = new kakao.maps.LatLng('[[${data.lat}]]', '[[${data.lot}]]'); 
+
+// 마커를 생성합니다
+var marker = new kakao.maps.Marker({
+    position: markerPosition
+});
+
+// 마커가 지도 위에 표시되도록 설정합니다
+marker.setMap(map);
+
+// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
+// marker.setMap(null);    
+</script>
+</body>
+</html>
 
 <div th:replace="~{/include/thymeleafBottom}"></div>
