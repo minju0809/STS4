@@ -64,10 +64,11 @@
 			<version>3.0.3</version>
 			<scope>test</scope>
 		</dependency>
+		
 		<dependency>
 		<groupId>com.fasterxml.jackson.core</groupId>
 		<artifactId>jackson-databind</artifactId>
-	</dependency>
+		</dependency>
 		<dependency>
 			<groupId>com.googlecode.json-simple</groupId>
 			<artifactId>json-simple</artifactId>

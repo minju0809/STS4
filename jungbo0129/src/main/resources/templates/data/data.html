@@ -1,0 +1,48 @@
+<div th:replace="~{/include/thymeleafTop}"></div>
+
+<style>
+  tr {
+    text-align: center;
+  }
+
+  .tdleft {
+    text-align: left;
+  }
+</style>
+
+<section>
+  <div align=center>
+    <h2>상세보기</h2>
+    <br>
+    <table border="1">
+      <tr>
+        <th>idx</th>
+        <td th:text="${data.idx}">
+      </tr>
+      <th>cnterNm</th>
+      <td th:text="${data.cnterNm}">
+        <tr>
+          <th>cnterChNm</th>
+          <td th:text="${data.cnterChNm}">
+        </tr>
+        <tr>
+          <th>lat</th>
+          <td th:text="${data.lat}">
+        </tr>
+        <tr>
+          <th>lot</th>
+          <td th:text="${data.lot}">
+        </tr>
+        <tr>
+          <th>hmpgAddr</th>
+          <td th:text="${data.roadNmAddr}">
+        </tr>
+        <tr>
+          <th>roadNmAddr</th>
+          <td th:text="${data.hmpgAddr}">
+        </tr>
+    </table>
+  </div>
+</section>
+
+<div th:replace="~{/include/thymeleafBottom}"></div>

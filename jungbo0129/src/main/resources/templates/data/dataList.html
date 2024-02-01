@@ -1,0 +1,40 @@
+<div th:replace="~{/include/thymeleafTop}"></div>
+
+<style>
+  tr {
+    text-align: center;
+  }
+
+  .tdleft {
+    text-align: left;
+  }
+</style>
+
+<section>
+  <div align=center>
+    <h2>Data 목록 (DB)</h2>
+    <br>
+    <table border="1">
+      <tr>
+        <th>idx</th>
+        <th>cnterNm</th>
+        <th>cnterChNm</th>
+        <th>lat</th>
+        <th>lot</th>
+        <th>hmpgAddr</th>
+        <th>roadNmAddr</th>
+      </tr>
+      <tr th:each="data : ${dataList}">
+        <td th:text="${data.idx}">
+          <td><a th:text="${data.cnterNm}" th:href="@{/data.do(idx=${data.idx})}"></a></td>
+        <td th:text="${data.cnterChNm}">
+        <td th:text="${data.lat}">
+        <td th:text="${data.lot}">
+        <td th:text="${data.hmpgAddr}">
+        <td th:text="${data.roadNmAddr}">
+      </tr>
+    </table>
+  </div>
+</section>
+
+<div th:replace="~{/include/thymeleafBottom}"></div>

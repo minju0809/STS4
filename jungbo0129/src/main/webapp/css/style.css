@@ -99,6 +99,7 @@ td {
 	display: flex;
 	z-index: 3;
 	justify-content: space-around;
+	box-shadow: 1px 1px 10px black;
 }
 
 #nav.active .list {
@@ -121,7 +122,7 @@ td {
 
 .list {
 	text-align: center;
-	height: 200px;
+	height: 300px;
 	box-shadow: 0 2px 1px var(--point-color);
 	z-index: 2;
 	position: absolute;
