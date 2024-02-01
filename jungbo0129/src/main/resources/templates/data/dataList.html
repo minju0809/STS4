@@ -14,6 +14,7 @@
   <div align=center>
     <h2>Data 목록 (DB)</h2>
     <br>
+    <div id="map" style="width:90%;height:400px;"></div>
     <table border="1">
       <tr>
         <th>idx</th>
@@ -26,7 +27,7 @@
       </tr>
       <tr th:each="data : ${dataList}">
         <td th:text="${data.idx}">
-          <td><a th:text="${data.cnterNm}" th:href="@{/data.do(idx=${data.idx})}"></a></td>
+        <td><a th:text="${data.cnterNm}" th:href="@{/data.do(idx=${data.idx})}"></a></td>
         <td th:text="${data.cnterChNm}">
         <td th:text="${data.lat}">
         <td th:text="${data.lot}">
@@ -36,5 +37,32 @@
     </table>
   </div>
 </section>
+
+<script type="text/javascript"
+  src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5fd42cdd845577dc157f2510c3e96a73&libraries=services"></script>
+  <script th:inline="javascript">
+    /*<![CDATA[*/
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+        mapOption = { 
+            center: new kakao.maps.LatLng(37.5642135, 127.0016985), // 지도의 중심좌표
+            level: 8 // 지도의 확대 레벨
+        };
+
+    var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+    /*[# th:each="data : ${dataList}"]*/
+    // 마커가 표시될 위치입니다 
+    var markerPosition[[${data.idx}]] = new kakao.maps.LatLng([[${data.lat}]], [[${data.lot}]]); 
+
+    // 마커를 생성합니다
+    var marker[[${data.idx}]] = new kakao.maps.Marker({
+        position: markerPosition[[${data.idx}]]
+    });
+
+    // 마커가 지도 위에 표시되도록 설정합니다
+    marker[[${data.idx}]].setMap(map);
+    /*[/]*/
+    /*]]>*/
+</script>
 
 <div th:replace="~{/include/thymeleafBottom}"></div>
