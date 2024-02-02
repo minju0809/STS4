@@ -51,6 +51,7 @@
           <th>이미지</th>
         </tr>
         <tr th:each="cart : ${li}">
+          <input type=hidden name="order_idx" th:value="${order_idx}"> 
           <td><input name="cart_idx" th:value="${cart.cart_idx}" readonly></td>
           <td><input name="product_idx" th:value="${cart.product_idx}" readonly></td>
           <td><input name="product_name" th:value="${cart.product_name}" readonly></td>
@@ -63,7 +64,7 @@
               </option>
             </select>
           </td>
-          <td><input name="total_price" id="[[${cart.cart_idx}]]_total_price" th:value="${cart.total_price}" readonly>
+          <td><input name="total_price" id="${cart.cart_idx}_total_price" th:value="${cart.total_price}" readonly>
           </td>
           <td>
             <img th:src="@{/img/shop/__${cart.product_imgStr}__}" alt="image" width="50">
@@ -74,7 +75,7 @@
         </tr>
         <tr>
           <td colspan="8" align="right">전체 구매 금액:
-            <span th:text="${total}"></span>원
+            <span th:text="${#numbers.formatInteger(total, 0, 'COMMA')}"></span>원
           </td>
         </tr>
         <tr>

@@ -55,12 +55,20 @@
 		select * from cartTbl order by cart_idx desc
 	</select>
 
-  <!-- <insert id="orderInsert"
+  <delete id="cartDeleteAll">
+
+		delete from cartTbl
+	</delete>
+
+  <select id="order_idx" resultType="int">
+    select nvl(max(order_idx), 300000) + 1  from  orderTBL
+  </select>  
+
+  <insert id="orderAll"
 		parameterType="com.springboot.jungbo0129.shop.OrderVO">
 
-		insert into orderTbl (order_idx, cart_idx, product_idx, product_name, product_amount, order_price)
-    values ((select nvl(max(order_idx), 300000) + 1 from orderTbl), 
-    #{cart_idx}, #{product_idx}, #{product_name}, #{product_amount}, #{order_price})
+		insert into orderTbl (order_idx, cart_idx, product_idx, product_name, product_amount, total_price)
+    values (#{order_idx}, #{cart_idx}, #{product_idx}, #{product_name}, #{product_amount}, #{total_price})
 	</insert>
 
   <select id="orderList"
@@ -68,6 +76,6 @@
 		resultType="com.springboot.jungbo0129.shop.OrderVO">
 
 		select * from orderTbl order by order_idx desc
-	</select> -->
+	</select>
 
 </mapper>

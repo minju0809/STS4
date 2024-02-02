@@ -19,4 +19,12 @@ public interface ShopDao {
   void cartUpdate(CartVO vo);
 
   List<CartVO> cartList(CartVO vo);
+
+  void cartDeleteAll();
+
+  int order_idx();
+
+  void orderAll(OrderVO vo);
+
+  List<OrderVO> orderList(OrderVO vo);
 }

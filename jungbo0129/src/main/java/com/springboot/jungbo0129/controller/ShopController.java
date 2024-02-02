@@ -108,6 +108,7 @@ public class ShopController {
       total += cart.getTotal_price();
     }
 
+    model.addAttribute("order_idx", service.order_idx());
     model.addAttribute("li", cartList);
     model.addAttribute("total", total);
 
@@ -115,9 +116,27 @@ public class ShopController {
   }
 
   @PostMapping("/orderAll.do")
-  String orderAll(OrderVO vo) {
+  String orderAll(@RequestParam String[] order_idx,
+      @RequestParam String[] cart_idx,
+      @RequestParam String[] product_idx,
+      @RequestParam String[] product_name,
+      @RequestParam String[] product_amount,
+      @RequestParam String[] total_price) {
 
-    // System.out.println("@@@@cvo: " + vo);
+    for (int i = 0; i < cart_idx.length; i++) {
+      OrderVO vo = new OrderVO();
+      vo.setOrder_idx(Integer.parseInt(order_idx[i]));
+      vo.setCart_idx(Integer.parseInt(cart_idx[i]));
+      vo.setProduct_idx(Integer.parseInt(product_idx[i]));
+      vo.setProduct_name(product_name[i]);
+      vo.setProduct_amount(Integer.parseInt(product_amount[i]));
+      vo.setTotal_price(Integer.parseInt(total_price[i]));
+
+      service.orderAll(vo);
+      System.out.println("!@!@#!@#!@#!@#" + vo);
+    }
+
+    service.cartDeleteAll();
 
     return "redirect:/orderList.do";
   }
@@ -125,7 +144,7 @@ public class ShopController {
   @GetMapping("/orderList.do")
   String orderList(OrderVO vo, Model model) {
 
-    // model.addAttribute("li", );
+    model.addAttribute("li", service.orderList(vo));
 
     return "/shop/orderList";
   }

@@ -49,4 +49,26 @@ public class ShopServiceImpl implements ShopService {
   public List<CartVO> cartList(CartVO vo) {
     return dao.cartList(vo);
   }
+
+  @Override
+  public void cartDeleteAll() {
+    dao.cartDeleteAll();
+  }
+
+  @Override
+  public int order_idx() {
+    return dao.order_idx();
+  }
+
+  // Order
+
+  @Override
+  public void orderAll(OrderVO vo) {
+    dao.orderAll(vo);
+  }
+
+  @Override
+  public List<OrderVO> orderList(OrderVO vo) {
+    return dao.orderList(vo);
+  }
 }
