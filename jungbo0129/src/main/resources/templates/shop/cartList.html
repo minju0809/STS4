@@ -1,0 +1,91 @@
+<div th:replace="~{/include/thymeleafTop}"></div>
+
+<style>
+  tr {
+    text-align: center;
+  }
+
+  .tdleft {
+    text-align: left;
+  }
+</style>
+
+<script>
+  function onAmountChange(ev, cart_idx, price, amount) {
+
+    const element = document.getElementById(cart_idx + "_total_price");
+    if (element) {
+      element.value = updatedPrice;
+    } else {
+      console.error("Element not found for cart_idx: " + cart_idx);
+    }
+
+    console.log(cart_idx, price, amount);
+
+    const selectedAmount = ev.options[ev.selectedIndex].value;
+    console.log("selectedAmount: " + selectedAmount);
+
+    const updatedPrice = price / amount * selectedAmount;
+    console.log("updatedPrice: " + updatedPrice);
+    document.getElementById(cart_idx + "_total_price").value = updatedPrice;
+  }
+
+  orderAll = () => {
+    f1.action = "/orderAll.do";
+  }
+
+</script>
+
+<section>
+  <div align="center">
+    <h2>장바구니</h2>
+    <br>
+    <form name="f1" method="post" enctype="multipart/form-data">
+      <table border="1">
+        <tr>
+          <th>카트순번</th>
+          <th>상품번호</th>
+          <th>상품이름</th>
+          <th>수량</th>
+          <th>가격</th>
+          <th>이미지</th>
+        </tr>
+        <tr th:each="cart : ${li}">
+          <td><input name="cart_idx" th:value="${cart.cart_idx}" readonly></td>
+          <td><input name="product_idx" th:value="${cart.product_idx}" readonly></td>
+          <td><input name="product_name" th:value="${cart.product_name}" readonly></td>
+          <td>
+            <select name="product_amount" id="product_amount"
+              th:onchange="onAmountChange(this, '[[${cart.cart_idx}]]', '[[${cart.total_price}]]', '[[${cart.product_amount}]]')">
+              <option th:each="amount : ${#numbers.sequence(1, 5)}" th:value="${amount}"
+                th:selected="${amount == cart.product_amount}">
+                <span th:text="${amount}"></span>
+              </option>
+            </select>
+          </td>
+          <td><input name="total_price" id="[[${cart.cart_idx}]]_total_price" th:value="${cart.total_price}" readonly>
+          </td>
+          <td>
+            <img th:src="@{/img/shop/__${cart.product_imgStr}__}" alt="image" width="50">
+          </td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(li)}">
+          <td colspan="8" align="center">장바구니가 비어있습니다.</td>
+        </tr>
+        <tr>
+          <td colspan="8" align="right">전체 구매 금액:
+            <span th:text="${total}"></span>원
+          </td>
+        </tr>
+        <tr>
+          <td colspan="8" align="center">
+            <input type="submit" value="전체수정" onclick="updateAll()" />
+            <input type="submit" value="전체주문" onclick="orderAll()"/>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</section>
+
+<div th:replace="~{/include/thymeleafBottom}"></div>

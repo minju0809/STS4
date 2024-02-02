@@ -12,6 +12,13 @@
 		select * from productTbl order by product_idx desc
 	</select>
 
+  <select id="product"
+		parameterType="com.springboot.jungbo0129.shop.ProductVO"
+		resultType="com.springboot.jungbo0129.shop.ProductVO">
+
+		select * from productTbl where product_idx = #{product_idx}
+	</select>
+
   <insert id="productInsert"
 		parameterType="com.springboot.jungbo0129.shop.ProductVO">
 
@@ -19,5 +26,48 @@
     values ((select nvl(max(product_idx), 100000) + 1 from productTbl), 
     #{product_name}, #{product_price}, #{product_desc}, #{product_imgStr})
 	</insert>
+
+  <select id="cartCheck"
+    parameterType="com.springboot.jungbo0129.shop.CartVO"
+    resultType="com.springboot.jungbo0129.shop.CartVO">
+    select * from cartTbl where product_idx = #{product_idx}
+  </select>
+
+  <insert id="cartInsert"
+		parameterType="com.springboot.jungbo0129.shop.CartVO">
+
+		insert into cartTbl (cart_idx, product_idx, product_name, product_amount, total_price, product_imgStr)
+    values ((select nvl(max(cart_idx), 200000) + 1 from cartTbl), 
+    #{product_idx}, #{product_name}, #{product_amount}, #{total_price}, #{product_imgStr})
+	</insert>
+
+  <update id="cartUpdate"
+		parameterType="com.springboot.jungbo0129.shop.CartVO">
+
+		update cartTbl set product_amount = product_amount + #{product_amount}, total_price = total_price + #{total_price}
+    where product_idx = #{product_idx}  
+	</update>
+
+  <select id="cartList"
+		parameterType="com.springboot.jungbo0129.shop.CartVO"
+		resultType="com.springboot.jungbo0129.shop.CartVO">
+
+		select * from cartTbl order by cart_idx desc
+	</select>
+
+  <!-- <insert id="orderInsert"
+		parameterType="com.springboot.jungbo0129.shop.OrderVO">
+
+		insert into orderTbl (order_idx, cart_idx, product_idx, product_name, product_amount, order_price)
+    values ((select nvl(max(order_idx), 300000) + 1 from orderTbl), 
+    #{cart_idx}, #{product_idx}, #{product_name}, #{product_amount}, #{order_price})
+	</insert>
+
+  <select id="orderList"
+		parameterType="com.springboot.jungbo0129.shop.OrderVO"
+		resultType="com.springboot.jungbo0129.shop.OrderVO">
+
+		select * from orderTbl order by order_idx desc
+	</select> -->
 
 </mapper>

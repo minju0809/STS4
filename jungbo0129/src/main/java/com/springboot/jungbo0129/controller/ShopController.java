@@ -2,11 +2,14 @@ package com.springboot.jungbo0129.controller;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
+import com.springboot.jungbo0129.shop.CartVO;
+import com.springboot.jungbo0129.shop.OrderVO;
 import com.springboot.jungbo0129.shop.ProductVO;
 import com.springboot.jungbo0129.shop.ShopService;
 
@@ -15,6 +18,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ShopController {
@@ -30,6 +34,13 @@ public class ShopController {
 
     model.addAttribute("li", service.productList(vo));
     return "/shop/productList";
+  }
+
+  @GetMapping("/product.do")
+  String product(ProductVO vo, Model model) {
+
+    model.addAttribute("product", service.product(vo));
+    return "/shop/product";
   }
 
   @GetMapping("/productForm.do")
@@ -70,6 +81,53 @@ public class ShopController {
     service.productInsert(vo);
 
     return "redirect:/productList.do";
+  }
+
+  @PostMapping("/cartAdd.do")
+  String cartAdd(CartVO vo) {
+
+    // System.out.println("@@@@cvo: " + vo);
+
+    CartVO checkVO = service.cartCheck(vo);
+
+    if (checkVO == null) {
+      service.cartInsert(vo);
+    } else {
+      service.cartUpdate(vo);
+    }
+
+    return "redirect:/cartList.do";
+  }
+
+  @GetMapping("/cartList.do")
+  String cartList(CartVO vo, Model model) {
+    List<CartVO> cartList = service.cartList(vo);
+
+    int total = 0;
+    for (CartVO cart : cartList) {
+      total += cart.getTotal_price();
+    }
+
+    model.addAttribute("li", cartList);
+    model.addAttribute("total", total);
+
+    return "/shop/cartList";
+  }
+
+  @PostMapping("/orderAll.do")
+  String orderAll(OrderVO vo) {
+
+    // System.out.println("@@@@cvo: " + vo);
+
+    return "redirect:/orderList.do";
+  }
+
+  @GetMapping("/orderList.do")
+  String orderList(OrderVO vo, Model model) {
+
+    // model.addAttribute("li", );
+
+    return "/shop/orderList";
   }
 
 }

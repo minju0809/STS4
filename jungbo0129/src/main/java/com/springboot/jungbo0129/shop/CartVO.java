@@ -5,15 +5,12 @@ import org.springframework.web.multipart.MultipartFile;
 import lombok.Data;
 
 @Data
-public class ProductVO {
+public class CartVO {
+  private int cart_idx;
   private int product_idx;
   private String product_name;
-  private int product_price;
-  private String product_desc;
-  private String product_imgStr;
-  private MultipartFile product_img;
-  private String product_date;
-
   private int product_amount;
   private int total_price;
+  private MultipartFile product_img;
+  private String product_imgStr;
 }

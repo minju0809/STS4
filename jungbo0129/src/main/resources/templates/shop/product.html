@@ -1,0 +1,76 @@
+<div th:replace="~{/include/thymeleafTop}"></div>
+
+<script>
+  updatePrice = () => {
+    var amount = document.getElementById("product_amount").value;
+    var price = document.getElementById("product_price").value;
+
+    var total = amount * price;
+
+    document.getElementById("total_price").value = total;
+  }
+</script>
+
+<section>
+  <div align=center>
+    <h2>상품 상세보기</h2>
+    <br>
+    <form action="/cartAdd.do" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="product_imgStr" th:value="${product.product_imgStr}">
+      <table border="1">
+        <tr>
+          <td colspan="2">
+            <img th:src="@{/img/shop/__${product.product_imgStr}__}" alt="image" width="150">
+          </td>
+        </tr>
+        <tr>
+          <th>순번</th>
+          <td><input name="product_idx" th:value="${product.product_idx}" readonly></td>
+        </tr>
+        <tr>
+          <th>이름</th>
+          <td><input name="product_name" th:value="${product.product_name}" readonly></td>
+        </tr>
+        <tr>
+          <th>가격</th>
+          <td><input id="product_price" name="product_price" th:value="${product.product_price}" readonly></td>
+        </tr>
+        <tr>
+          <th>설명</th>
+          <td><input name="product_desc" th:value="${product.product_desc}" readonly></td>
+        </tr>
+        <tr>
+          <th>등록일</th>
+          <td><input name="product_date" th:value="${product.product_date}" readonly></td>
+        </tr>
+        <tr>
+        <tr>
+          <th>수량</th>
+          <td>
+            <select id="product_amount" name="product_amount" onchange="updatePrice()">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <th>총 가격</th>
+          <td>
+            <input id="total_price" name="total_price" th:value="${product.product_price}" readonly>
+          </td>
+        </tr>
+        <th colspan="2" align="center">
+          <input type="submit" value="장바구니에 추가">
+          <input type="button" value="조회" onclick="location.href='/productList.do'">
+        </th>
+        </tr>
+      </table>
+    </form>
+  </div>
+</section>
+
+
+
+
+<div th:replace="~{/include/thymeleafBottom}"></div>
