@@ -1,5 +1,6 @@
 package com.rubypaper.domain;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import jakarta.persistence.Column;
@@ -22,13 +23,23 @@ public class Board { // 189p
 	@Id // PK
 	@GeneratedValue // 자동증가
 	private Long seq;
+	@Column(length=20)
 	private String title;
-	private String writer;
+	@Column(nullable=false)
+	private String writer; 
+	private int age;
+	// pay decimal(15, 2) default 0.00 설정 // precision: 전체자릿수, scale: 소수점 자릿수
+	@Column(insertable=false, precision=12, scale=2, columnDefinition="decimal(15,2) default 0.00")
+	private BigDecimal pay;
+	@Column(unique=true)
 	private String content;
-	@Temporal(TemporalType.TIMESTAMP)
-//	@Column(columnDefinition="Date default sysdate")
-	@Column(name = "CREATE_DATE")
+	// default 값을 사용하려면 insertable=false, updatable=false 필수
+	// 값을 직접 넣으려면 true 혹은 제거
+//	@Temporal(TemporalType.TIMESTAMP)
+	@Column(insertable=false, updatable=false, columnDefinition="Date default sysdate")
+//	@Column(name = "CREATE_DATE")
 	private Date createDate;
+	@Column(insertable=false, updatable=true, columnDefinition="number default 1")
 	private Long cnt;
 	
 	@Transient // 엔티티 클래스 내의 특정 변수를 영속 필드에서 제외할 때 사용
@@ -36,10 +47,10 @@ public class Board { // 189p
 	@Transient
 	private String ch2;
 	
-	@PrePersist
-    protected void onCreate() {
-        createDate = new Date();
-    }
+//	@PrePersist
+//    protected void onCreate() {
+//        createDate = new Date();
+//    }
 	
 	public Long getSeq() {
 		return seq;
@@ -56,6 +67,12 @@ public class Board { // 189p
 	public String getWriter() {
 		return writer;
 	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
@@ -70,6 +87,12 @@ public class Board { // 189p
 	}
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
+	}
+	public BigDecimal getPay() {
+		return pay;
+	}
+	public void setPay(BigDecimal pay) {
+		this.pay = pay;
 	}
 	public Long getCnt() {
 		return cnt;
@@ -91,9 +114,10 @@ public class Board { // 189p
 	}
 	@Override
 	public String toString() {
-		return "Board [seq=" + seq + ", title=" + title + ", writer=" + writer + ", content=" + content
-				+ ", createDate=" + createDate + ", cnt=" + cnt + ", ch1=" + ch1 + ", ch2=" + ch2 + "]";
+		return "Board [seq=" + seq + ", title=" + title + ", writer=" + writer + ", age=" + age + ", pay=" + pay
+				+ ", content=" + content + ", createDate=" + createDate + ", cnt=" + cnt + ", ch1=" + ch1 + ", ch2="
+				+ ch2 + "]";
 	}
-	
+
 	
 }
