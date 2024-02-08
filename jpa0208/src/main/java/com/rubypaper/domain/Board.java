@@ -14,6 +14,8 @@ public class Board {
 	private String content;
 	private Date createDate;
 	private Long cnt;
+	private String id;
+	
 	public Long getSeq() {
 		return seq;
 	}
@@ -44,12 +46,17 @@ public class Board {
 	public void setCnt(Long cnt) {
 		this.cnt = cnt;
 	}
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	@Override
 	public String toString() {
 		return "Board [seq=" + seq + ", title=" + title + ", content=" + content + ", createDate=" + createDate
-				+ ", cnt=" + cnt + "]";
+				+ ", cnt=" + cnt + ", id=" + id + "]";
 	}
 
-	
-	
 }

@@ -2,6 +2,7 @@ package com.rubypaper;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -23,7 +24,48 @@ class Jpa0208ApplicationTests {
 	BoardCrudRepository boardRepo;
 	
 	@Test
-	void IUDLoads() {
+	void CRUD() {
+		boardRepo.Update();
+		boardRepo.Update2();
+//		boardRepo.Insert();
+//		boardRepo.Delete();
+	}
+	
+//	@Test
+//	void JPQLSelect() {
+//		for (long i = 0; i >= 70; i++) {
+//			Optional<Board> m = boardRepo.findById(i);
+//			if (!m.isEmpty()) {
+//				Board board = boardRepo.findById(i).get();
+//				board.setId("member2");
+//				boardRepo.save(board);
+//				System.out.println(m);
+//			}
+//		}
+////		List<Board> li = boardRepo.SelectTest1("제목10", "내용20");
+////		List<Board> li = boardRepo.SelectTest2();
+////		
+////		for(Board b : li) {
+////			System.out.println("=====> " + b);
+////		}
+//	}
+	
+//	@Test
+//	void Select() {
+//		Optional<Member> m = memberRepo.findById("member1");
+//		System.out.println("===> " + m);
+		
+//		List<Member> li = memberRepo.OrderBytIdDesc();
+//		List<Member> li = memberRepo.findByRoleContainingOrderByNameAsc("s");
+//		List<Member> li = memberRepo.findByRoleLikeOrderByIdDesc("%s%");
+//		
+//		for(Member mem : li) {
+//			System.out.println("=====> " + mem);
+//		}
+//	}
+	
+//	@Test
+//	void IUDLoads() {
 		// insert
 //		for (int i = 0; i < 1; i++) {
 //			Board board = new Board();
@@ -44,21 +86,21 @@ class Jpa0208ApplicationTests {
 //		
 //		// delete
 //		boardRepo.deleteById(1L);
-	}
+//	}
 	
-	@AfterEach
-	void SelectLoads() {
-		Board board = boardRepo.findById(2L).get();
-		System.out.println("board: " + board);
-		
-		List<Board> li = (List<Board>)boardRepo.findAll();
-		
-		for(Board m : li) {
-			if(m.getSeq() < 50) {
-				System.out.println("===> " + m);
-			}
-		} 	
-	}
+//	@AfterEach
+//	void SelectLoads() {
+//		Board board = boardRepo.findById(2L).get();
+//		System.out.println("board: " + board);
+//		
+//		List<Board> li = (List<Board>)boardRepo.findAll();
+//		
+//		for(Board m : li) {
+//			if(m.getSeq() < 50) {
+//				System.out.println("===> " + m);
+//			}
+//		} 	
+//	}
 
 	@Test
 	void contextLoads() {

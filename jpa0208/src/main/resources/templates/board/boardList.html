@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+		<br>
+		<br>
+		<div align=center>
+			<h1>목록보기</h1>
+
+			<table border=1 width="650" height="200">
+				<tr align="center">
+					<th th:text="SEQ" />
+					<th th:text="TITLE" />
+					<th th:text="WRITER" />
+					<th th:text="CreateDate" />
+					<th th:text="cnt" />
+				</tr>
+
+				<tr th:each="m : ${li} ">
+					<td align="center" th:text="${m.seq}" />
+					<td align="center" th:text="${m.title}" />
+					<td align="center" th:text="${m.id}" />
+					<td align="center" th:text="${m.CreateDate}" />
+					<td align="center" th:text="${m.cnt}" />
+				</tr>
+
+			</table>
+		</div>
+	</section>
+</body>
+</html>
