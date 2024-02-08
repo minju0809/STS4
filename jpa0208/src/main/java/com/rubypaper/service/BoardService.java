@@ -6,5 +6,5 @@ import com.rubypaper.domain.Board;
 
 public interface BoardService {
 	
-	List<Board> boardList();
+	List<Board> boardList(Board vo);
 }

@@ -10,12 +10,21 @@
 		<br>
 		<div align=center>
 			<h1>목록보기</h1>
-
+			<form action="/board/boardList">
+				<select name=ch1>
+					<option value="title">제목</option>
+					<option value="content">내용</option>
+				</select>
+				<input type=text name=ch2 />
+				<input type=submit value="검색">
+			</form>
+			<br>
 			<table border=1 width="650" height="200">
 				<tr align="center">
 					<th th:text="SEQ" />
 					<th th:text="TITLE" />
 					<th th:text="WRITER" />
+					<th th:text="content" />
 					<th th:text="CreateDate" />
 					<th th:text="cnt" />
 				</tr>
@@ -24,10 +33,10 @@
 					<td align="center" th:text="${m.seq}" />
 					<td align="center" th:text="${m.title}" />
 					<td align="center" th:text="${m.id}" />
+					<td align="center" th:text="${m.content}" />
 					<td align="center" th:text="${m.CreateDate}" />
 					<td align="center" th:text="${m.cnt}" />
 				</tr>
-
 			</table>
 		</div>
 	</section>
