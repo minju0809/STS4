@@ -9,8 +9,10 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import lombok.ToString;
 
 @Entity
+@ToString(exclude="member")
 public class Board {
 	@Id @GeneratedValue
 	private Long seq;
@@ -71,12 +73,13 @@ public class Board {
 
 	public void setMember(Member member) {
 		this.member = member;
+		member.getBoardList().add(this);
 	}
 
 	@Override
 	public String toString() {
 		return "Board [seq=" + seq + ", title=" + title + ", content=" + content + ", createDate=" + createDate
-				+ ", cnt=" + cnt + ", member=" + member + "]";
+				+ ", cnt=" + cnt + "]";
 	}
 	
 	
