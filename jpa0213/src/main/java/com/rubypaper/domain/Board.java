@@ -22,7 +22,7 @@ public class Board {
 	private Long cnt;
 	
 	@ManyToOne
-	@JoinColumn(name="member_id")
+	@JoinColumn(name="member_id", nullable=false)
 	private Member member;
 
 	public Long getSeq() {
