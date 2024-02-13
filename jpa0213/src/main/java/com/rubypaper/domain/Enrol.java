@@ -20,11 +20,11 @@ public class Enrol {
 	private String fscore;
 	
 	@ManyToOne
-	@JoinColumn(name="sno", nullable=false)
+	@JoinColumn(name="s_sno", nullable=false)
 	private Student student;
 	
 	@ManyToOne
-	@JoinColumn(name="cno", nullable=false)
+	@JoinColumn(name="c_cno", nullable=false)
 	private Course course;
 	
 	
@@ -65,12 +65,14 @@ public class Enrol {
 	}
 	public void setStudent(Student student) {
 		this.student = student;
+		student.getEnrolList().add(this);
 	}
 	public Course getCourse() {
 		return course;
 	}
 	public void setCourse(Course course) {
 		this.course = course;
+		course.getEnrolList().add(this);
 	}
 	
 	@Override

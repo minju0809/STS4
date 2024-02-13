@@ -3,6 +3,8 @@ package com.rubypaper.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
@@ -15,12 +17,13 @@ import lombok.ToString;
 @ToString(exclude="enrolList")
 public class Student {
 	@Id 
+	@Column(name="s_sno")
 	private String sno;
 	private String sname;
 	private String year;
 	private String dept;
 	
-	@OneToMany(mappedBy="student", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="student", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	private List<Enrol> enrolList = new ArrayList<Enrol>();
 	
 	public String getSno() {
