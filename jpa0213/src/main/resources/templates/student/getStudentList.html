@@ -8,8 +8,10 @@
 
 	<section>
 		<div align=center>
+			<br><br>
+			<h1>학생 목록</h1>
 			<br>
-			<table border=1>
+			<table border=1 width=400>
 				<tr>
 					<th>학번</th>
 					<th>이름</th>
@@ -18,7 +20,7 @@
 				</tr>
 				<tr th:each="student : ${li}">
 					<td th:text="${student.sno}" />
-					<td th:text=${student.sname}></td>
+					<td><a th:text="${student.sname}" th:href="@{/getEnrol.do(sno=${student.sno})}"></a></td>
 					<td th:text=${student.year}></td>
 					<td th:text=${student.dept}></td>
 				</tr>

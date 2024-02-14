@@ -1,10 +1,12 @@
 package com.rubypaper.domain;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Transient;
 import lombok.ToString;
 
 @Entity
@@ -18,6 +20,12 @@ public class Enrol {
 	private String grade;
 	private String mscore;
 	private String fscore;
+	
+	@Transient
+	private int scoreSum;
+	@Transient
+	private double scoreAvg;
+
 	
 	@ManyToOne
 	@JoinColumn(name="s_sno", nullable=false)
@@ -57,6 +65,20 @@ public class Enrol {
 	}
 	public void setFscore(String fscore) {
 		this.fscore = fscore;
+	}
+	
+
+	public int getScoreSum() {
+		return scoreSum;
+	}
+	public void setScoreSum(int scoreSum) {
+		this.scoreSum = scoreSum;
+	}
+	public double getScoreAvg() {
+		return scoreAvg;
+	}
+	public void setScoreAvg(double scoreAvg) {
+		this.scoreAvg = scoreAvg;
 	}
 	
 	

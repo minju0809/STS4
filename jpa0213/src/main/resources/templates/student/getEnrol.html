@@ -1,0 +1,44 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>thymeleaf</title>
+</head>
+<body>
+<div th:replace="~{/include/top}"></div>
+
+	<section>
+		<div align=center>
+			<br><br>
+			<h1>학생 정보</h1>
+			<br>
+			<table border=1 width=700>
+				<tr>
+					<th>학번</th>
+					<th>이름</th>
+					<th>학년</th>
+					<th>학과</th>
+					<th>과목코드</th>
+					<th>과목명</th>
+					<th>중간성적</th>
+					<th>기말성적</th>
+					<th>합계</th>
+					<th>평균</th>
+				</tr>
+				
+				<tr th:each="enrol : ${li}">
+					<td th:text="${enrol.sno}" />
+					<td th:text="${enrol.Student.sname}"></td>
+					<td th:text="${enrol.Student.year}"></td>
+					<td th:text="${enrol.Student.dept}"></td>
+					<td th:text="${enrol.cno}"></td>
+					<td th:text="${enrol.Course.cname}"></td>
+					<td th:text="${enrol.mscore}"></td>
+					<td th:text="${enrol.fscore}"></td>
+					<td th:text="${enrol.mscore}+${enrol.fscore}"></td>
+					<td th:text="(${enrol.mscore}+${enrol.fscore})/2"></td>
+				</tr>
+			</table>
+		</div>
+	</section>
+	
+<div th:replace="~{/include/bottom}"></div>

@@ -3,6 +3,8 @@ package com.rubypaper.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.data.annotation.Transient;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -22,6 +24,7 @@ public class Student {
 	private String sname;
 	private String year;
 	private String dept;
+
 	
 	@OneToMany(mappedBy="student", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	private List<Enrol> enrolList = new ArrayList<Enrol>();
