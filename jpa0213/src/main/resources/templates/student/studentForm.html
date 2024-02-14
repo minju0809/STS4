@@ -1,0 +1,42 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>thymeleaf</title>
+</head>
+<body>
+	<div th:replace="~{/include/top}"></div>
+
+	<section>
+		<div align=center>
+			<br> <br>
+			<h1>학생 등록</h1>
+			<br>
+			<form action="/studentInsert.do">
+				<table border=1>
+					<tr>
+						<th>학번</th>
+						<td><input name="sno"></td>
+					</tr>
+					<tr>
+						<th>이름</th>
+						<td><input name="sname"></td>
+					</tr>
+					<tr>
+						<th>학년</th>
+						<td><input name="year"></td>
+					</tr>
+					<tr>
+						<th>학과</th>
+						<td><input name="dept"></td>
+					</tr>
+					<tr>
+						<td colspan=2 align=center>
+							<input type=submit value="등록">
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</section>
+
+	<div th:replace="~{/include/bottom}"></div>

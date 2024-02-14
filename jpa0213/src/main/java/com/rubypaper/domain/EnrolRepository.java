@@ -11,5 +11,4 @@ public interface EnrolRepository extends CrudRepository<Enrol, String>,
 	Enrol findBySnoAndCno(String str1, String str2);
 	
 	List<Enrol> findBySno(String sno);
-
 }

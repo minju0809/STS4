@@ -30,7 +30,7 @@ public class Enrol {
 	@ManyToOne
 	@JoinColumn(name="s_sno", nullable=false)
 	private Student student;
-	
+
 	@ManyToOne
 	@JoinColumn(name="c_cno", nullable=false)
 	private Course course;

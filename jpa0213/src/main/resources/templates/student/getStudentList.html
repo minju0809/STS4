@@ -19,7 +19,7 @@
 					<th>학과</th>
 				</tr>
 				<tr th:each="student : ${li}">
-					<td th:text="${student.sno}" />
+					<td><a th:text="${student.sno}" th:href="@{/enrolForm.do(sno=${student.sno})}" ></a></td>
 					<td><a th:text="${student.sname}" th:href="@{/getEnrol.do(sno=${student.sno})}"></a></td>
 					<td th:text=${student.year}></td>
 					<td th:text=${student.dept}></td>

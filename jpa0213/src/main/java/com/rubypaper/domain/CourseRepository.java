@@ -6,4 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 public interface CourseRepository extends CrudRepository<Course, String>,
 	QuerydslPredicateExecutor<Course> {
 
+	Course findByCno(String cno);
 }

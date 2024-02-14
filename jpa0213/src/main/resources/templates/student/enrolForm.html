@@ -1,0 +1,58 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>thymeleaf</title>
+</head>
+<body>
+	<div th:replace="~{/include/top}"></div>
+
+	<section>
+		<div align=center>
+			<br> <br>
+			<h1>성적 등록</h1>
+			<br>
+			<form action="/enrolInsert.do" method=post>
+				<table border=1>
+					<tr>
+						<th>학번</th>
+						<td><input name="sno" th:value=${sno} readonly></td>
+					</tr>
+					<tr>
+						<th>과목</th>
+						<td>
+							<select name="cno">
+       		 					<option th:each="course : ${li}" 
+       		 					th:value="${course.cno}" 
+       		 					th:text="${course.cname}"></option>
+   					 		</select>
+						</td>
+					</tr>
+					<tr>
+						<th>중간</th>
+						<td><input name="mscore"></td>
+					</tr>
+					<tr>
+						<th>기말</th>
+						<td><input name="fscore"></td>
+					</tr>
+					<tr>
+						<th>평점</th>
+						<td>
+							<select name="grade">
+								<option value="A">A</option>
+								<option value="B">B</option>
+								<option value="C">C</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td colspan=2 align=center>
+							<input type=submit value="등록">
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</section>
+
+	<div th:replace="~{/include/bottom}"></div>
