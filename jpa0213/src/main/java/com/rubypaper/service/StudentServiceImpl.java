@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.rubypaper.domain.Course;
 import com.rubypaper.domain.CourseRepository;
 import com.rubypaper.domain.Enrol;
+import com.rubypaper.domain.EnrolPK;
 import com.rubypaper.domain.EnrolRepository;
 import com.rubypaper.domain.Student;
 import com.rubypaper.domain.StudentRepository;
@@ -104,6 +105,14 @@ public class StudentServiceImpl implements StudentService {
 	@Override
 	public List<Enrol> findBySno(String sno) {
 		return enrolRepo.findBySno(sno);
+	}
+
+	@Override
+	public void deleteCheck(String sno, String cno) {
+		EnrolPK enrolPK = new EnrolPK();
+		enrolPK.setCno(cno);
+		enrolPK.setSno(sno);
+		enrolRepo.deleteById(enrolPK);
 	}
 
 

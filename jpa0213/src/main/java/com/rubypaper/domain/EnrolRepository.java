@@ -9,12 +9,13 @@ import org.springframework.data.repository.CrudRepository;
 
 import jakarta.transaction.Transactional;
 
-public interface EnrolRepository extends CrudRepository<Enrol, String>,
+public interface EnrolRepository extends CrudRepository<Enrol, EnrolPK>,
 	QuerydslPredicateExecutor<Enrol> {
 	
 	Enrol findBySnoAndCno(String str1, String str2);
 	Enrol findByCnoAndSno(String str1, String str2);
 	List<Enrol> findByCno(String str1);
+	
 	List<Enrol> findBySno(String sno);
 	
 	@Transactional

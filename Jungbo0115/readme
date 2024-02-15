@@ -148,3 +148,33 @@ org.springframework.dao.DataIntegrityViolationException: not-null property refer
 
 400번 레코드를 모두 삭제(cno 중복을 없앰)
 cno 중복이 없는 레코드는 삭제 됨 (but, sno가 같은 레코드 함께 삭제)
+
+public interface EnrolRepository extends CrudRepository<Enrol, EnrolPK>,
+형을 String 에서 EnrolPK로 바꾸어주고,
+
+Service에
+
+@Override
+public void deleteCheck(String sno, String cno) {
+  EnrolPK enrolPK = new EnrolPK();
+  enrolPK.setCno(cno);
+  enrolPK.setSno(sno);
+  enrolRepo.deleteById(enrolPK);
+}
+
+를 추가해주고,
+
+@GetMapping("/deleteCheck.do")
+String deleteCheck(String cno, String sno) {
+  
+//		Enrol enrol = service.findBySnoAndCno(sno, cno);
+      Enrol enrol = service.findByCnoAndSno(cno, sno);
+//		System.out.println("@@@@@@@@enrol: " + enrol);
+  
+//		service.deleteCheck(enrol.getSno(), enrol.getCno());
+  service.deleteCheck(sno, cno);
+  
+  return "redirect:/getEnrolList.do";
+}
+
+여전히 sno 가 같은 레코드는 모두 사라짐

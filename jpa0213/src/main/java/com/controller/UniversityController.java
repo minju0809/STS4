@@ -155,6 +155,20 @@ public class UniversityController {
 	}
 	
 	
+	@GetMapping("/deleteCheck.do")
+	String deleteCheck(String cno, String sno) {
+		
+//		Enrol enrol = service.findBySnoAndCno(sno, cno);
+		Enrol enrol = service.findByCnoAndSno(cno, sno);
+//		System.out.println("@@@@@@@@enrol: " + enrol);
+		
+		service.deleteCheck(enrol.getSno(), enrol.getCno());
+//		service.deleteCheck(sno, cno);
+		
+		return "redirect:/getEnrolList.do";
+	}
+	
+	
 	@GetMapping("/deleteQuery.do")
 	String deleteQuery() {
 		

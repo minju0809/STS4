@@ -4,9 +4,8 @@ import java.io.Serializable;
 
 @SuppressWarnings("serial")
 public class EnrolPK implements Serializable {
-	private String sno;
 	private String cno;
-	
+	private String sno;
 	
 	public String getSno() {
 		return sno;
@@ -20,6 +19,5 @@ public class EnrolPK implements Serializable {
 	public void setCno(String cno) {
 		this.cno = cno;
 	}
-	
 	
 }

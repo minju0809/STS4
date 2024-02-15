@@ -34,4 +34,6 @@ public interface StudentService {
 	void deleteCno(List<Enrol> enrol);
 	
 	void deleteQuery();
+	
+	void deleteCheck(String sno, String cno);
 }
