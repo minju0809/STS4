@@ -11,7 +11,8 @@
 			<br><br>
 			<h1>학생 전체목록</h1>
 			<br>
-			<table border=1 width=700>
+			<a th:href="@{/deleteQuery.do}">삭제</a>
+			<table border=1 width=800>
 				<tr>
 					<th>학번</th>
 					<th>이름</th>
@@ -25,8 +26,8 @@
 					<th>합계</th>
 					<th>평균</th>
 					<th>평균</th>
+					<th>삭제</th>
 				</tr>
-				
 				<tr th:each="enrol : ${li}">
 					<td th:text="${enrol.sno}" />
 					<td th:text="${enrol.Student.sname}"></td>
@@ -40,6 +41,9 @@
 					<td th:text="${enrol.scoreSum}"></td>
 					<td th:text="(${enrol.mscore}+${enrol.fscore})/2"></td>
 					<td th:text="${enrol.scoreAvg}"></td>
+					<td><a th:href="@{/deleteBySnoAndCno.do(sno=${enrol.sno}, cno=${enrol.cno})}">삭제</a></td>
+					<td><a th:href="@{/deleteByCnoAndSno.do(sno=${enrol.sno}, cno=${enrol.cno})}">삭제</a></td>
+					<td><a th:href="@{/deleteByCno.do(sno=${enrol.sno}, cno=${enrol.cno})}">삭제</a></td>
 				</tr>
 			</table>
 		</div>

@@ -24,4 +24,14 @@ public interface StudentService {
 	Course getCourse(String cno);
 	
 	void deleteStudent(String sno);
+	
+	Enrol findBySnoAndCno(String sno, String cno);
+	Enrol findByCnoAndSno(String cno, String sno);
+	List<Enrol> findByCno(String cno);
+	List<Enrol> findBySno(String sno);
+	
+	void deleteT(Enrol enrol);
+	void deleteCno(List<Enrol> enrol);
+	
+	void deleteQuery();
 }

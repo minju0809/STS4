@@ -71,4 +71,40 @@ public class StudentServiceImpl implements StudentService {
 		studentRepo.deleteById(sno);
 	}
 
+	@Override
+	public Enrol findBySnoAndCno(String sno, String cno) {
+		return enrolRepo.findBySnoAndCno(sno, cno);
+	}
+
+	@Override
+	public void deleteT(Enrol enrol) {
+		enrolRepo.delete(enrol);
+	}
+
+	@Override
+	public void deleteCno(List<Enrol> enrol) {
+		enrolRepo.deleteAll(enrol);
+	}
+
+	@Override
+	public void deleteQuery() {
+		enrolRepo.deleteQuery();
+	}
+
+	@Override
+	public Enrol findByCnoAndSno(String cno, String sno) {
+		return enrolRepo.findByCnoAndSno(cno, sno);
+	}
+
+	@Override
+	public List<Enrol> findByCno(String cno) {
+		return enrolRepo.findByCno(cno);
+	}
+	
+	@Override
+	public List<Enrol> findBySno(String sno) {
+		return enrolRepo.findBySno(sno);
+	}
+
+
 }

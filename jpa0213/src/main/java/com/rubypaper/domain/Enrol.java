@@ -14,10 +14,11 @@ import lombok.ToString;
 @IdClass(EnrolPK.class)
 @ToString(exclude={"student", "course"})
 public class Enrol {
-	@Id
-	private String sno;
+	
 	@Id
 	private String cno;
+	@Id
+	private String sno;
 	private String grade;
 	private String mscore;
 	private String fscore;

@@ -1,0 +1,150 @@
+public class Enrol {
+	
+	@Id
+	private String cno;
+	@Id
+	private String sno;
+	private String grade;
+	private String mscore;
+	private String fscore;
+	
+	@Transient
+	private int scoreSum;
+	@Transient
+	private double scoreAvg;
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+public interface EnrolRepository extends CrudRepository<Enrol, String>,
+	QuerydslPredicateExecutor<Enrol> {
+	
+	Enrol findBySnoAndCno(String str1, String str2);
+	Enrol findByCnoAndSno(String str1, String str2);
+	List<Enrol> findByCno(String str1);
+	List<Enrol> findBySno(String sno);
+	
+	@Transactional
+	@Modifying
+	@Query(value="delete from enrol where sno='500' and cno ='C312'", nativeQuery=true)
+	void deleteQuery();
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+// Service
+
+@Override
+public Enrol findBySnoAndCno(String sno, String cno) {
+  return enrolRepo.findBySnoAndCno(sno, cno);
+}
+
+@Override
+public void deleteT(Enrol enrol) {
+  enrolRepo.delete(enrol);
+}
+
+@Override
+public void deleteCno(List<Enrol> enrol) {
+  enrolRepo.deleteAll(enrol);
+}
+
+@Override
+public void deleteQuery() {
+  enrolRepo.deleteQuery();
+}
+
+@Override
+public Enrol findByCnoAndSno(String cno, String sno) {
+  return enrolRepo.findByCnoAndSno(cno, sno);
+}
+
+@Override
+public List<Enrol> findByCno(String cno) {
+  return enrolRepo.findByCno(cno);
+}
+
+@Override
+public List<Enrol> findBySno(String sno) {
+  return enrolRepo.findBySno(sno);
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+// Controller
+
+
+@GetMapping("/deleteBySnoAndCno.do")
+String deleteBySnoAndCno(String sno, String cno) {
+  
+  Enrol enrol = service.findBySnoAndCno(sno, cno);
+  System.out.println("@@@@@@@@enrol: " + enrol);
+//		@@@@@@@@enrol: Enrol [sno=400, cno=C123, grade=A, mscore=90, fscore=90]
+  service.deleteT(enrol);
+  // 동일 sno의 레코드와 student, course까지 모두 삭제 됨
+  
+  return "redirect:/getEnrolList.do";
+}
+
+@GetMapping("/deleteByCnoAndSno.do")
+String deleteByCnoAndSno(String cno, String sno) {
+  
+  Enrol enrol = service.findByCnoAndSno(cno, sno);
+  System.out.println("@@@@@@@@enrol: " + enrol);
+//		@@@@@@@@enrol: Enrol [sno=400, cno=C123, grade=A, mscore=90, fscore=90]
+  service.deleteT(enrol);
+  // id의 위치를 바꾸어도 동일 sno가 모두 삭제 됨
+  
+  return "redirect:/getEnrolList.do";
+}
+
+@GetMapping("/deleteByCno.do")
+String deleteByCno(String cno, String sno) {
+  
+		List<Enrol> enrol = service.findByCno(cno);
+		System.out.println("@@@@@@@@enrol: " + enrol);
+//		@@@@@@@@enrol: [Enrol [sno=300, cno=C312, grade=A, mscore=90, fscore=95],
+//		Enrol [sno=400, cno=C312, grade=A, mscore=90, fscore=95], Enrol [sno=500,
+//		cno=C312, grade=B, mscore=85, fscore=80]]
+		service.deleteCno(enrol); // null 
+  
+  List<Enrol> enrol2 = service.findBySno(sno);
+		System.out.println("@@@@@@@@enrol: " + enrol2);
+//		@@@@@@@@enrol: [Enrol [sno=400, cno=C324, grade=A, mscore=95, fscore=90],
+//		                Enrol [sno=400, cno=C413, grade=B, mscore=80, fscore=85],
+//		                Enrol [sno=400, cno=E412, grade=C, mscore=65, fscore=75],
+//		                Enrol [sno=400, cno=C123, grade=A, mscore=90, fscore=90],
+//		                Enrol [sno=400, cno=C312, grade=A, mscore=90, fscore=95]]
+  
+  service.deleteCno(enrol2);
+  
+  return "redirect:/getEnrolList.do";
+}
+
+JPA delete 시 findBySnoAndCno 두 값을 받아와서 나온 레코드를 삭제하고 싶었으나,
+delete() 함수 작용 시 해당 sno의 전체 레코드가 삭제 됨 (연결 된 Student, Course 엔티티의 연관 레코드도 모두 삭제)
+
+Enrol 엔티티의 id의 위치를 포함 모든 것을 바꾸고 findByCnoAndSno 로 진행을 해보았으나, 
+delete() 함수 작용 시 여전히 sno의 전체 레코드가 삭제 됨
+
+findBySno - sno만 받아와서 해당 레코드 삭제 확인
+deleteAll() 함수 작용 시 해당 sno의 전체 레코드 삭제
+
+findByCno - cno만 받아와서 해당 레코드 삭제 확인
+deleteAll() 함수 작용 시 
+
+
+This application has no explicit mapping for /error, so you are seeing this as a fallback.
+
+Thu Feb 15 17:26:21 KST 2024
+There was an unexpected error (type=Internal Server Error, status=500).
+not-null property references a null or transient value : com.rubypaper.domain.Enrol.course
+org.springframework.dao.DataIntegrityViolationException: not-null property references a null or transient value : com.rubypaper.domain.Enrol.course
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.convertHibernateAccessException(HibernateJpaDialect.java:307)
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:241)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.translateExceptionIfPossible(AbstractEntityManagerFactoryBean.java:550)
+	at org.springframework.dao.support.ChainedPersistenceExceptionTranslator.translateExceptionIfPossible(ChainedPersistenceExceptionTranslator.java:61)
+	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:335)
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:152)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184)
+
+400번 레코드를 모두 삭제(cno 중복을 없앰)
+cno 중복이 없는 레코드는 삭제 됨 (but, sno가 같은 레코드 함께 삭제)
