@@ -22,4 +22,6 @@ public interface StudentService {
 	Student getStudent(String sno);
 	
 	Course getCourse(String cno);
+	
+	void deleteStudent(String sno);
 }

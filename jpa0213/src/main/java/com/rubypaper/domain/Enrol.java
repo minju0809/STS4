@@ -1,6 +1,7 @@
 package com.rubypaper.domain;
 
 
+import jakarta.persistence.*;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
@@ -27,15 +28,14 @@ public class Enrol {
 	private double scoreAvg;
 
 	
-	@ManyToOne
-	@JoinColumn(name="s_sno", nullable=false)
-	private Student student;
+	@ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="s_sno", nullable=false)
+    private Student student;
 
-	@ManyToOne
-	@JoinColumn(name="c_cno", nullable=false)
-	private Course course;
-	
-	
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="c_cno", nullable=false)
+    private Course course;
+
 	public String getSno() {
 		return sno;
 	}
@@ -94,7 +94,7 @@ public class Enrol {
 	}
 	public void setCourse(Course course) {
 		this.course = course;
-		course.getEnrolList().add(this);
+//		course.getEnrolList().add(this);
 	}
 	
 	@Override

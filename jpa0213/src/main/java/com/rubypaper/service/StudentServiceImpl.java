@@ -66,4 +66,9 @@ public class StudentServiceImpl implements StudentService {
 		return courseRepo.findByCno(cno);
 	}
 
+	@Override
+	public void deleteStudent(String sno) {
+		studentRepo.deleteById(sno);
+	}
+
 }

@@ -22,7 +22,7 @@ public class Course {
 	private String dept;
 	private String prname;
 	
-	@OneToMany(mappedBy="course", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="course", fetch=FetchType.EAGER)
 	private List<Enrol> enrolList = new ArrayList<Enrol>();
 	
 	

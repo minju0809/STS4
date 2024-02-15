@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.rubypaper.domain.Course;
 import com.rubypaper.domain.Enrol;
@@ -95,5 +96,13 @@ public class UniversityController {
 		service.enrolInsert(enrol);
 		
 	    return "redirect:/getEnrolList.do";
+	}
+	
+	@GetMapping("/deleteStudent.do")
+	String deleteStudent(@RequestParam("sno") String sno) {
+		
+		service.deleteStudent(sno);
+		
+		return "redirect:/getStudentList.do";
 	}
 }
