@@ -28,14 +28,15 @@ public class SCEMappingTest {
 	@Test
 	void contextLoads() {
 //		Course course = courseRepo.findById("C123").get();
-////		course.setCname("C언어");
+//		course.setCname("C언어");
 //		course.setCno("CCC123"); // pk를 수정할 경우, 기존 레코드 그대로 남아있고, 새로 insert가 됨
+								 // 영속성 전이가 안 되기 때문에 enrol을 바뀌지 않음
 //		courseRepo.save(course);
+//		courseRepo.deleteById("C123");
 //		
 		Student student = studentRepo.findById("300").get();
 		student.setSno("301");
-		studentRepo.save(
-				student);
+		studentRepo.save(student);
 		
 //		studentRepo.deleteById("400");
 	}

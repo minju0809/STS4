@@ -1,3 +1,10 @@
+// 해결!!!!!
+// Course 영속성 다시 연결
+자식 엔티티에 fetch=FetchType.LAZY 로 변경
+@ManyToOne 에서 (cascade = CascadeType.ALL) 삭제
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
 public class Enrol {
 	
 	@Id
@@ -178,3 +185,93 @@ String deleteCheck(String cno, String sno) {
 }
 
 여전히 sno 가 같은 레코드는 모두 사라짐
+
+
+/////////////////////////////////////////////////////////////////
+// 롬복 추가 - 에러 사라짐 어떤 버튼을 클릭해도 모든 레코드가 사라짐
+
+
+// 해결!!!!!
+// Course 영속성 다시 연결
+자식 엔티티에 fetch=FetchType.LAZY 로 변경
+@ManyToOne 에서 (cascade = CascadeType.ALL) 삭제
+
+@ManyToOne
+@JoinColumn(name="s_sno", nullable=false)
+private Student student;
+
+@ManyToOne
+@JoinColumn(name="c_cno", nullable=false)
+private Course course;
+
+ 
+@Entity
+@Data
+@ToString(exclude="enrolList")
+public class Student {
+	@Id 
+	@Column(name="s_sno")
+	private String sno;
+	private String sname;
+	private String year;
+	private String dept;
+
+	@OneToMany(mappedBy="student", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	private List<Enrol> enrolList = new ArrayList<Enrol>();
+}
+
+@Data
+@Entity
+@ToString(exclude="enrolList")
+public class Course {
+	@Id
+	@Column(name="c_cno")
+	private String cno;
+	private String cname;
+	private String credit; 
+	private String dept;
+	private String prname;
+	
+	@OneToMany(mappedBy="course", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	private List<Enrol> enrolList = new ArrayList<Enrol>();
+}
+
+@Data
+@Entity
+@IdClass(EnrolPK.class)
+@ToString(exclude={"student", "course"})
+public class Enrol {
+	
+	@Id
+	private String cno;
+	@Id
+	private String sno;
+	private String grade;
+	private String mscore;
+	private String fscore;
+	
+	@Transient
+	private int scoreSum;
+	@Transient
+	private double scoreAvg;
+
+	
+	@ManyToOne
+    @JoinColumn(name="s_sno", nullable=false)
+    private Student student;
+
+    @ManyToOne
+    @JoinColumn(name="c_cno", nullable=false)
+    private Course course;
+
+    
+	public void setStudent(Student student) {
+		this.student = student;
+		student.getEnrolList().add(this);
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
+		course.getEnrolList().add(this);
+	}
+}

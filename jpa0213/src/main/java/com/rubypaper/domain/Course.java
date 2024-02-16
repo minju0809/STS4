@@ -9,8 +9,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import lombok.Data;
 import lombok.ToString;
 
+@Data
 @Entity
 @ToString(exclude="enrolList")
 public class Course {
@@ -22,55 +24,7 @@ public class Course {
 	private String dept;
 	private String prname;
 	
-	@OneToMany(mappedBy="course", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="course", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	private List<Enrol> enrolList = new ArrayList<Enrol>();
-	
-	
-	public String getCno() {
-		return cno;
-	}
-	public void setCno(String cno) {
-		this.cno = cno;
-	}
-	public String getCname() {
-		return cname;
-	}
-	public void setCname(String cname) {
-		this.cname = cname;
-	}
-	public String getCredit() {
-		return credit;
-	}
-	public void setCredit(String credit) {
-		this.credit = credit;
-	}
-	public String getDept() {
-		return dept;
-	}
-	public void setDept(String dept) {
-		this.dept = dept;
-	}
-	public String getPrname() {
-		return prname;
-	}
-	public void setPrname(String prname) {
-		this.prname = prname;
-	}
-	
-	
-	
-	public List<Enrol> getEnrolList() {
-		return enrolList;
-	}
-	public void setEnrolList(List<Enrol> enrolList) {
-		this.enrolList = enrolList;
-	}
-	
-	@Override
-	public String toString() {
-		return "Course [cno=" + cno + ", cname=" + cname + ", credit=" + credit + ", dept=" + dept + ", prname="
-				+ prname + "]";
-	}
-	
 	
 }

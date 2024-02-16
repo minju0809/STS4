@@ -134,22 +134,22 @@ public class UniversityController {
 	@GetMapping("/deleteByCno.do")
 	String deleteByCno(String cno, String sno) {
 		
-		List<Enrol> enrol = service.findByCno(cno);
+//		List<Enrol> enrol = service.findByCno(cno);
 //		System.out.println("@@@@@@@@enrol: " + enrol);
 //		@@@@@@@@enrol: [Enrol [sno=300, cno=C312, grade=A, mscore=90, fscore=95],
 //		Enrol [sno=400, cno=C312, grade=A, mscore=90, fscore=95], Enrol [sno=500,
 //		cno=C312, grade=B, mscore=85, fscore=80]]
-		service.deleteCno(enrol); // null 
+//		service.deleteCno(enrol); // null 
 		
-//		List<Enrol> enrol2 = service.findBySno(sno);
-//		System.out.println("@@@@@@@@enrol: " + enrol2);
+		List<Enrol> enrol2 = service.findBySno(sno);
+		System.out.println("@@@@@@@@enrol: " + enrol2);
 //		@@@@@@@@enrol: [Enrol [sno=400, cno=C324, grade=A, mscore=95, fscore=90],
 //		                Enrol [sno=400, cno=C413, grade=B, mscore=80, fscore=85],
 //		                Enrol [sno=400, cno=E412, grade=C, mscore=65, fscore=75],
 //		                Enrol [sno=400, cno=C123, grade=A, mscore=90, fscore=90],
 //		                Enrol [sno=400, cno=C312, grade=A, mscore=90, fscore=95]]
 		
-//		service.deleteCno(enrol2);
+		service.deleteCno(enrol2);
 		
 		return "redirect:/getEnrolList.do";
 	}
