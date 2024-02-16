@@ -26,7 +26,7 @@ public class Student {
 	private String dept;
 
 	
-	@OneToMany(mappedBy="student", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="student", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	private List<Enrol> enrolList = new ArrayList<Enrol>();
 	
 	public String getSno() {

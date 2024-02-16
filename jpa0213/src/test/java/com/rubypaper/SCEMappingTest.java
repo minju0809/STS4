@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.rubypaper.domain.Course;
 import com.rubypaper.domain.CourseRepository;
 import com.rubypaper.domain.Enrol;
 import com.rubypaper.domain.EnrolRepository;
@@ -26,15 +27,16 @@ public class SCEMappingTest {
 	
 	@Test
 	void contextLoads() {
-//		Enrol enrol = enrolRepo.findById(null).get();
-//		System.out.println(enrol.getStudent().getSname());
-//		System.out.println(enrol.getCourse().getCname());
-//
-//		Student student = studentRepo.findById(null).get();
-//		List<Enrol> li = student.getEnrolList();
+//		Course course = courseRepo.findById("C123").get();
+////		course.setCname("C언어");
+//		course.setCno("CCC123"); // pk를 수정할 경우, 기존 레코드 그대로 남아있고, 새로 insert가 됨
+//		courseRepo.save(course);
 //		
-//		for(Enrol e : li) {
-//			System.out.println("==> " + e.toString());
-//		}
+		Student student = studentRepo.findById("300").get();
+		student.setSno("301");
+		studentRepo.save(
+				student);
+		
+//		studentRepo.deleteById("400");
 	}
 }
